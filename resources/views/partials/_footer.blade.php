@@ -1,5 +1,10 @@
+    <?php
+        $contact=App\Contact::find(1);
+        $lang=Session::get('lang');
+    ?>
+
     <!-- Footer -->
-    <footer>
+    <footer >
         <!-- Footer Top -->           
         <div class="footer_top">
             <div class="container">   
@@ -58,13 +63,34 @@
                 </h2>
                         <ul class="cont_info">
                             <li><i class="fa fa-map-marker"></i>
-                                <p>371 Linden Avenue Longwood, FL 32750 </p>
+                                <p>
+                                @if($lang=='en')
+                                {{ $contact->area_en}}
+                                -
+                                {{ $contact->street_en }}
+                                @else
+                                {{ $contact->area_ar}}
+                                -
+                                {{ $contact->street_ar }}
+                                @endif
+                                </p>
                             </li>
                             <li><i class="fa fa-phone"></i>
-                                <p> <a href="tel:407-546-2034"> Phone: 407-546-2034 </a> </p>
+                                <p> <a href="tel:{{$contact->ph1}}">                                 
+                                Phone: 
+                                <span dir="ltr">{{$contact->ph1}}<span> </a> </p>
                             </li>
+
+                            @if($contact->ph2)
+                            <li><i class="fa fa-phone"></i>
+                                <p> <a href="tel:{{$contact->ph2}}">                                 
+                                Phone: 
+                                <span dir="ltr">{{$contact->ph2}}<span> </a> </p>
+                            </li>
+                            @endif
+
                             <li><i class="fa fa-envelope"></i>
-                                <p> <a href="mailto:connect@crelegant.com?Subject=template%20enquiry"> Email: connect@crelegant.com </a> </p>
+                                <p> <a href="mailto:{{$contact->email}}"> Email: {{$contact->email}} </a> </p>
                             </li>
                         </ul>
 

@@ -114,6 +114,19 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'area_en'=>'Area',
+        'area_ar'=>'Area',
+        'street_en' => 'Street',
+        'street_ar' => 'Street',
+        'pobox' => 'Post Box Number',
+        'state_en' => 'State',
+        'state_ar'=>'State',
+        'country_en'=>'Country',
+        'country_ar'=>'Country',
+        'ph1'=>'Phone Number 1',
+        'email'=>'Email',
+        'map'=> 'Map(iframe embed code)'
+    ],
 
 ];

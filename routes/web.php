@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+
+Route::get('/',"PagesController@getHomePage");
+Route::get('/contactus',"PagesController@getContactus");
+Route::post('/lang',"PagesController@setSession");
+
+
+
+// ----------------admin routes--------------------//
+
+
+Route::resource("sliders","SliderController");
+Route::resource("contacts","ContactController");

@@ -50,18 +50,32 @@
                     <div class="sig_in">
                         <p><i class="fa fa-user"></i>
                             <a href="#login_box" class="log_btn" data-toggle="modal"> Sign in </a> or <a class="reg_btn" href="#reg_box" data-toggle="modal"> create account </a> </p>
-                    </div>
-                    <div class="submit_prop">
-                        <h3 class="subm_btn"><a href="#prop_box" data-toggle="modal">
-                <i class="fa fa-bars"></i>
-                    <span> Submit Property </span></a>
-                </h3>
-                    </div>
+                        </div>
+                        {{-- <div class="submit_prop">
+                            <h3 class="subm_btn"><a href="#prop_box" data-toggle="modal">
+                                <i class="fa fa-bars"></i>
+                                <span> Submit Property </span></a>
+                            </h3>
+                        </div> --}}
+                        <div class="submit_prop">
+                            <h3 class="subm_btn">
+                               {{--  <a><span> En </span></a>
+                                <a><span> Ar </span></a> --}}
+                                <form action="/lang" method="POST" style="display: inline;">
+                                {{csrf_field()}}
+                                    <button type="submit" name="action" value="en" class="btn btn-link" style="color: white">En</button>
+                                </form>
+                                <form action="/lang" method="POST" style="display: inline;">
+                                {{csrf_field()}}
+                                    <button type="submit" name="action" value="ar" class="btn btn-link" style="color: white">عربى</button>
+                                </form>
+                            </h3>
+                        </div>
 
+                    </div>
+                    <!-- /.top-right -->
                 </div>
-                <!-- /.top-right -->
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.container -->
-    </section>
+            <!-- /.container -->
+        </section>
