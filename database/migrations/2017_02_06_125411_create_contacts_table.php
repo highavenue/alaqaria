@@ -34,6 +34,8 @@ class CreateContactsTable extends Migration {
             $table->string('instagram');
             $table->string('youtube');
             $table->string('rss');
+            $table->string('topbarcaption_en');
+            $table->string('topbarcaption_ar');
             $table->timestamps();
         });
 	}

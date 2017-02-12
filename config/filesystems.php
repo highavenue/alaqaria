@@ -54,6 +54,16 @@ return [
             'visibility' => 'public',
         ],
 
+        'placeholder_img' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/img/placeholder/',
+        ],
+
+        'slider_img' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/img/slider_img/',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',

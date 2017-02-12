@@ -10,8 +10,9 @@
                     <span class="icon-bar"></span>
                 </button>
                 <!-- Logo -->
-                <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo">
-                </a>
+               {{--  <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo">
+                </a> --}}
+                <a class="navbar-brand" href="{{ route('homePage') }}"><img src="uploads/img/logo/logo.jpg" alt="logo" height="100">
             </div>
             <!-- Navigation -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -20,7 +21,7 @@
                         <a class="" href="#"> Home </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="index.html"> Home 1 </a>
+                                <a href="{{ route('homePage') }}"> Home 1 </a>
                             </li>
                             <li>
                                 <a href="index-2.html"> Home 2 </a>
@@ -80,7 +81,7 @@
 
                     </li>
                     <li>
-                        <a class="" href="contact.html">Contact                                       </a>
+                        <a class="" href="{{ route('contactUs') }}">ContactUs</a>
                     </li>
 
                 </ul>

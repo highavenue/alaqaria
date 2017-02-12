@@ -8,18 +8,19 @@ use Session;
 
 class PagesController extends Controller
 {
+	
 	public function setSession(Request $request)
 	{
 
 		 
 		$lang=$request->input('action'); // it returns values:'ar' or 'en'
-		if($lang=='en')
+		if($lang=='ar')
 		{
-			Session::put('lang','en');
+			Session::put('lang','ar');
 		}
 		else
 		{
-			Session::put('lang','ar');
+			Session::put('lang','en');
 		}
 
 		return redirect()->back();

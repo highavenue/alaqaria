@@ -58,7 +58,9 @@ class ContactController extends Controller {
 	        'linkedin' => 'max:255',
 	        'instagram' => 'max:255',
 	        'youtube' => 'max:255',
-	        'rss' => 'max:255'
+	        'rss' => 'max:255',
+	        'topbarcaption_en'=>'max:255',
+	        'topbarcaption_ar'=>'max:255'
     	]);
 
 		$contact = new Contact();
@@ -83,7 +85,8 @@ class ContactController extends Controller {
         $contact->instagram = $request->input("instagram");
         $contact->youtube = $request->input("youtube");
         $contact->rss = $request->input("rss");
-
+        $contact->topbarcaption_en=$request->input('topbarcaption_en');
+        $contact->topbarcaption_ar=$request->input('topbarcaption_ar');
 		$contact->save();
 
 		return redirect()->route('contacts.index')->with('message', 'Item created successfully.');
@@ -124,6 +127,31 @@ class ContactController extends Controller {
 	 */
 	public function update(Request $request, $id)
 	{
+		$this->validate($request,[
+			'area_en' => 'required|max:255',
+	        'area_ar' => 'required|max:255',
+	        'street_en' => 'required|max:255',
+	        'street_ar' => 'required|max:255',
+	        'pobox' => 'required|max:255',
+	        'state_en' => 'required|max:255',
+	        'state_ar' => 'required|max:255',
+	        'country_en' => 'required|max:255',
+	        'country_ar' => 'required|max:255',
+	        'ph1' => 'required|max:255',
+	        'ph2' => 'max:255',
+	        'fax'=>'max:255',
+	        'email' => 'required|email|max:255',
+	        'map' => 'required',
+	        'facebook' => 'max:255',
+	        'twitter' => 'max:255',
+	        'linkedin' => 'max:255',
+	        'instagram' => 'max:255',
+	        'youtube' => 'max:255',
+	        'rss' => 'max:255',
+	        'topbarcaption_en'=>'max:255',
+	        'topbarcaption_ar'=>'max:255'
+    	]);
+
 		$contact = Contact::findOrFail($id);
 
 		$contact->area_en = $request->input("area_en");
@@ -146,6 +174,8 @@ class ContactController extends Controller {
         $contact->instagram = $request->input("instagram");
         $contact->youtube = $request->input("youtube");
         $contact->rss = $request->input("rss");
+        $contact->topbarcaption_en=$request->input('topbarcaption_en');
+        $contact->topbarcaption_ar=$request->input('topbarcaption_ar');
 
 		$contact->save();
 

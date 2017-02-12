@@ -2,48 +2,48 @@
                         <ul class="slides">
                            <!-- Slide 1 -->
                             <li>
-                                <img src="http://placehold.it/770x460" alt="Slider image" />
-                                <div class="slide-info">
+                                <img src="\uploads\img\search_slide\tower1.jpg" alt="Slider image" />
+                                {{-- <div class="slide-info">
                                     <p class="sli_price"> $425.000 </p>
                                     <p class="sli_titl"> Amillarah Private Islands </p>
                                     <p class="sli_desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit </p>
-                                </div>
+                                </div> --}}
                             </li>
                             <!-- Slide 2 -->
                             <li>
-                                <img src="http://placehold.it/770x460" alt="Slider image" />
-                                <div class="slide-info">
+                                <img src="\uploads\img\search_slide\ss2.jpg" alt="Slider image" />
+                               {{--  <div class="slide-info">
                                     <p class="sli_price"> $450.000 </p>
                                     <p class="sli_titl"> Amillarah Lorem Islands </p>
                                     <p class="sli_desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit </p>
-                                </div>
+                                </div> --}}
                             </li>
                             <!-- Slide 3 -->
                             <li>
-                                <img src="http://placehold.it/770x460" alt="Slider image" />
-                                <div class="slide-info">
+                                <img src="\uploads\img\search_slide\ss3.jpg" alt="Slider image" />
+                               {{--  <div class="slide-info">
                                     <p class="sli_price"> $445.000 </p>
                                     <p class="sli_titl"> Amillarah Dolar Islands </p>
                                     <p class="sli_desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit </p>
-                                </div>
+                                </div> --}}
                             </li>
                             <!-- Slide 4 -->
                             <li>
-                                <img src="http://placehold.it/770x460" alt="Slider image" />
-                                <div class="slide-info">
+                                <img src="\uploads\img\search_slide\ss4.jpg" alt="Slider image" />
+                                {{-- <div class="slide-info">
                                     <p class="sli_price"> $545.000 </p>
                                     <p class="sli_titl"> Amillarah Amet Islands </p>
                                     <p class="sli_desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit </p>
-                                </div>
+                                </div> --}}
                             </li>
                             <!-- Slide 5 -->
                             <li>
-                                <img src="http://placehold.it/770x460" alt="Slider image" />
-                                <div class="slide-info">
+                                <img src="\uploads\img\search_slide\ss5.jpg" alt="Slider image" />
+                                {{-- <div class="slide-info">
                                     <p class="sli_price"> $475.000 </p>
                                     <p class="sli_titl"> Amillarah Consectetuer Islands </p>
                                     <p class="sli_desc"> Lorem ipsum dolor sit amet, consectetuer adipiscing elit </p>
-                                </div>
+                                </div> --}}
                             </li>
                             <!-- Slide 6 -->
                             <li>

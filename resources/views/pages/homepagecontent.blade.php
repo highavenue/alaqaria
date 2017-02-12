@@ -153,8 +153,10 @@
         $('#slider').flexslider({
             animation: "slide",
             controlNav: false,
-            animationLoop: false,
-            slideshow: false
+            animationLoop: true,
+            slideshow: true,
+            slideshowSpeed: 5000
+
         });
     });
 </script>

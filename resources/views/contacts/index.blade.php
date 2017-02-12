@@ -38,6 +38,8 @@
                         <th>INSTAGRAM</th>
                         <th>YOUTUBE</th>
                         <th>RSS</th>
+                        <th>TOPBARCAPTION_EN</th>
+                        <th>TOPBARCAPTION_AR</th>
                             <th class="text-right">OPTIONS</th>
                         </tr>
                     </thead>
@@ -66,6 +68,8 @@
                     <td>{{$contact->instagram}}</td>
                     <td>{{$contact->youtube}}</td>
                     <td>{{$contact->rss}}</td>
+                    <td>{{$contact->topbarcaption_en}}</td>
+                    <td>{{$contact->topbarcaption_ar}}</td>
                                 <td class="text-right">
                                     <a class="btn btn-xs btn-primary" href="{{ route('contacts.show', $contact->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('contacts.edit', $contact->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>

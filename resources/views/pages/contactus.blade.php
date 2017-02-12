@@ -102,10 +102,10 @@
 					<div class="col-lg-12">
 
 						<h3 class="main_titl text-left">
-							@if($lang=='en')
-							Alaqaria information
+							@if($lang=='ar')
+							المعلومات العقارية
 							@else
-							 المعلومات العقارية
+							Alaqaria information
 							@endif
 						</h3>
 
@@ -119,15 +119,15 @@
 							<i class="fa fa-map-marker"></i>
 						</div>
 						<p class="infos">
-						 @if($lang=='en')
-                                {{ $contact->area_en}}
-                                -
-                                {{ $contact->street_en }}
-                                @else
-                                {{ $contact->area_ar}}
-                                -
-                                {{ $contact->street_ar }}
-                                @endif
+						 @if($lang=='ar')
+                            {{ $contact->area_ar}}
+                            -
+                            {{ $contact->street_ar }}
+                            @else
+                            {{ $contact->area_en}}
+                            -
+                            {{ $contact->street_en }}
+                            @endif
                           </p>
 					</div>
 

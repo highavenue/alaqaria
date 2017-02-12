@@ -113,6 +113,22 @@
                         <span class="help-block">{{ $errors->first("email") }}</span>
                        @endif
                     </div>
+
+                     <div class="form-group @if($errors->has('topbarcaption_en')) has-error @endif">
+                       <label for="topbarcaption_en-field">Topbarcaption_en</label>
+                    <input type="text" id="topbarcaption_en-field" name="topbarcaption_en" class="form-control" value="{{ is_null(old("topbarcaption_en")) ? $contact->topbarcaption_en : old("topbarcaption_en") }}"/>
+                       @if($errors->has("topbarcaption_en"))
+                        <span class="help-block">{{ $errors->first("topbarcaption_en") }}</span>
+                       @endif
+                    </div>
+                    <div class="form-group @if($errors->has('topbarcaption_ar')) has-error @endif">
+                       <label for="topbarcaption_ar-field">Topbarcaption_ar</label>
+                    <input type="text" id="topbarcaption_ar-field" name="topbarcaption_ar" class="form-control" value="{{ is_null(old("topbarcaption_ar")) ? $contact->topbarcaption_ar : old("topbarcaption_ar") }}"/>
+                       @if($errors->has("topbarcaption_ar"))
+                        <span class="help-block">{{ $errors->first("topbarcaption_ar") }}</span>
+                       @endif
+                    </div>
+
                     <div class="form-group @if($errors->has('map')) has-error @endif">
                        <label for="map-field">Map</label>
                     <textarea class="form-control" id="map-field" rows="3" name="map">{{ is_null(old("map")) ? $contact->map : old("map") }}</textarea>

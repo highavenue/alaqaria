@@ -1,3 +1,7 @@
+<?php
+    $contact=App\Contact::find(1);
+    $lang=Session::get('lang');
+?>
     <!-- Top Bar -->
     <section class="top_sec">
         <div class="container">
@@ -6,32 +10,32 @@
                     <div class="soc_ico">
                         <ul>
                             <li class="tweet">
-                                <a href="#">
+                                <a href="{{$contact->twitter}}" target="_blank">
                                     <i class="fa fa-twitter"></i>
                                 </a>
                             </li>
                             <li class="fb">
-                                <a href="#">
+                                <a href="{{$contact->facebook}}" target="_blank">
                                     <i class="fa fa-facebook"></i>
                                 </a>
                             </li>
                             <li class="insta">
-                                <a href="#">
+                                <a href="{{$contact->instagram}}" target="_blank">
                                     <i class="fa fa-instagram"></i>
                                 </a>
                             </li>
                             <li class="linkd">
-                                <a href="#">
+                                <a href="{{$contact->linkedin}}" target="_blank">
                                     <i class="fa fa-linkedin"></i>
                                 </a>
                             </li>
                             <li class="ytube">
-                                <a href="#">
+                                <a href="{{$contact->youtube}}" target="_blank">
                                     <i class="fa fa-youtube"></i>
                                 </a>
                             </li>
                             <li class="rss">
-                                <a href="#">
+                                <a href="{{$contact->rss}}" target="_blank">
                                     <i class="fa fa-rss"></i>
                                 </a>
                             </li>
@@ -41,7 +45,13 @@
 
                     </div>
                     <div class="inf_txt">
-                        <p>Luxury Real Estate Specialists Worldwide</p>
+                        <p>
+                        @if($lang=='ar')
+                            {{ $contact->topbarcaption_ar}}
+                            @else
+                            {{ $contact->topbarcaption_en}}
+                            @endif
+                        </p>
                     </div>
 
                 </div>

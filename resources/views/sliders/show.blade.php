@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                      <label for="image">IMAGE</label>
-                     <p class="form-control-static">{{$slider->image}}</p>
+                     <p class="form-control-static"><img src="{{$slider->imageURL}}" class="img-thumbnail"" width="350" height="236"> </td></p>
                 </div>
                     <div class="form-group">
                      <label for="title_en">TITLE_EN</label>

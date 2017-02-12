@@ -24,6 +24,9 @@
        <span class="help-block">{{ $errors->first("image") }}</span>
        @endif
      </div>
+     
+     <div class="row">
+        <div class="col-md-6">
      <div class="form-group @if($errors->has('title_en')) has-error @endif">
        <label for="title_en-field">Title_en</label>
        <input type="text" id="title_en-field" name="title_en" class="form-control" value="{{ old("title_en") }}"/>
@@ -31,6 +34,9 @@
        <span class="help-block">{{ $errors->first("title_en") }}</span>
        @endif
      </div>
+     </div>
+
+     <div class="col-md-6" dir="rtl">
      <div class="form-group @if($errors->has('title_ar')) has-error @endif">
        <label for="title_ar-field">Title_ar</label>
        <input type="text" id="title_ar-field" name="title_ar" class="form-control" value="{{ old("title_ar") }}"/>
@@ -38,6 +44,11 @@
        <span class="help-block">{{ $errors->first("title_ar") }}</span>
        @endif
      </div>
+            </div>
+     </div>
+
+     <div class="row">
+        <div class="col-md-6">
      <div class="form-group @if($errors->has('subject_en')) has-error @endif">
        <label for="subject_en-field">Subject_en</label>
        <input type="text" id="subject_en-field" name="subject_en" class="form-control" value="{{ old("subject_en") }}"/>
@@ -45,6 +56,9 @@
        <span class="help-block">{{ $errors->first("subject_en") }}</span>
        @endif
      </div>
+     </div>
+
+     <div class="col-md-6" dir="rtl">
      <div class="form-group @if($errors->has('subject_ar')) has-error @endif">
        <label for="subject_ar-field">Subject_ar</label>
        <input type="text" id="subject_ar-field" name="subject_ar" class="form-control" value="{{ old("subject_ar") }}"/>
@@ -52,6 +66,11 @@
        <span class="help-block">{{ $errors->first("subject_ar") }}</span>
        @endif
      </div>
+     </div>
+     </div>
+
+     <div class="row">
+        <div class="col-md-6">
      <div class="form-group @if($errors->has('linktext_en')) has-error @endif">
        <label for="linktext_en-field">Linktext_en</label>
        <input type="text" id="linktext_en-field" name="linktext_en" class="form-control" value="{{ old("linktext_en") }}"/>
@@ -59,6 +78,9 @@
        <span class="help-block">{{ $errors->first("linktext_en") }}</span>
        @endif
      </div>
+     </div>
+
+     <div class="col-md-6" dir="rtl">
      <div class="form-group @if($errors->has('linktext_ar')) has-error @endif">
        <label for="linktext_ar-field">Linktext_ar</label>
        <input type="text" id="linktext_ar-field" name="linktext_ar" class="form-control" value="{{ old("linktext_ar") }}"/>
@@ -66,6 +88,9 @@
        <span class="help-block">{{ $errors->first("linktext_ar") }}</span>
        @endif
      </div>
+     </div>
+     </div>
+
      <div class="form-group @if($errors->has('link')) has-error @endif">
        <label for="link-field">Link</label>
        <textarea class="form-control" id="link-field" rows="3" name="link">{{ old("link") }}</textarea>

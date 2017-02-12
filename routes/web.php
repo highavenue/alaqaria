@@ -16,8 +16,8 @@
 // });
 
 
-Route::get('/',"PagesController@getHomePage");
-Route::get('/contactus',"PagesController@getContactus");
+Route::get('/',"PagesController@getHomePage")->name('homePage');
+Route::get('/contactus',"PagesController@getContactus")->name('contactUs');
 Route::post('/lang',"PagesController@setSession");
 
 

@@ -33,16 +33,16 @@
                     <tbody>
                         @foreach($sliders as $slider)
                             <tr>
-                                <td>{{$slider->id}}</td>
-                                <td>{{$slider->image}}</td>
-                    <td>{{$slider->title_en}}</td>
-                    <td>{{$slider->title_ar}}</td>
-                    <td>{{$slider->subject_en}}</td>
-                    <td>{{$slider->subject_ar}}</td>
-                    <td>{{$slider->linktext_en}}</td>
-                    <td>{{$slider->linktext_ar}}</td>
-                    <td>{{$slider->link}}</td>
-                                <td class="text-right">
+                                <td style="vertical-align: middle;">{{$slider->id}}</td>
+                                <td style="vertical-align: middle;"><img src="{{$slider->imageURL}}" class="img-thumbnail" width="150" height="136"> </td>
+                    <td style="vertical-align: middle;">{{$slider->title_en}}</td>
+                    <td style="vertical-align: middle;">{{$slider->title_ar}}</td>
+                    <td style="vertical-align: middle;">{{$slider->subject_en}}</td>
+                    <td style="vertical-align: middle;">{{$slider->subject_ar}}</td>
+                    <td style="vertical-align: middle;">{{$slider->linktext_en}}</td>
+                    <td style="vertical-align: middle;">{{$slider->linktext_ar}}</td>
+                    <td style="vertical-align: middle;">{{$slider->link}}</td>
+                                <td class="text-right" style="vertical-align: middle;">
                                     <a class="btn btn-xs btn-primary" href="{{ route('sliders.show', $slider->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                                     <a class="btn btn-xs btn-warning" href="{{ route('sliders.edit', $slider->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
                                     <form action="{{ route('sliders.destroy', $slider->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">

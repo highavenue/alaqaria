@@ -64,14 +64,14 @@
                         <ul class="cont_info">
                             <li><i class="fa fa-map-marker"></i>
                                 <p>
-                                @if($lang=='en')
-                                {{ $contact->area_en}}
-                                -
-                                {{ $contact->street_en }}
-                                @else
+                                @if($lang=='ar')
                                 {{ $contact->area_ar}}
                                 -
                                 {{ $contact->street_ar }}
+                                @else
+                                {{ $contact->area_en}}
+                                -
+                                {{ $contact->street_en }}
                                 @endif
                                 </p>
                             </li>

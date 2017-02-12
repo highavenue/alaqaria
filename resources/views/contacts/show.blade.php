@@ -76,6 +76,14 @@
            <label for="email">EMAIL</label>
            <p class="form-control-static">{{$contact->email}}</p>
        </div>
+         <div class="form-group">
+               <label for="topbarcaption_en">TOPBARCAPTION_EN</label>
+               <p class="form-control-static">{{$contact->topbarcaption_en}}</p>
+           </div>
+           <div class="form-group">
+               <label for="topbarcaption_ar">TOPBARCAPTION_AR</label>
+               <p class="form-control-static">{{$contact->topbarcaption_ar}}</p>
+           </div>
        <div class="form-group">
            <label for="map">MAP</label>
            <p class="form-control-static">{{$contact->map}}</p>
