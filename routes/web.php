@@ -18,8 +18,12 @@
 
 Route::get('/',"PagesController@getHomePage")->name('homePage');
 Route::get('/contactus',"PagesController@getContactus")->name('contactUs');
-Route::post('/lang',"PagesController@setSession");
+Route::get('/aboutus',"PagesController@getAboutus")->name('aboutUs');
+Route::get('/companyoverview',"PagesController@getCompanyOverview")->name('companyOverview');
+Route::get('/missionandvision',"PagesController@getMissionAndVision")->name('missionAndVision');
+Route::get('/management',"PagesController@getManagement")->name('management');
 
+Route::post('/lang',"PagesController@setSession");
 
 
 // ----------------admin routes--------------------//
@@ -27,3 +31,5 @@ Route::post('/lang',"PagesController@setSession");
 
 Route::resource("sliders","SliderController");
 Route::resource("contacts","ContactController");
+Route::resource("abouts","AboutController");
+Route::resource("managements","ManagementController");

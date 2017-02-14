@@ -39,4 +39,25 @@ class PagesController extends Controller
     	// $contact=Contact::find('1');
     	return view('pages.contactus');//->with('contact',$contact);
     }
+
+    public function getAboutus(Request $request)
+    {
+    	return view('pages.aboutus');//->with('contact',$contact);
+    }
+
+    public function getCompanyOverview(Request $request)
+    {
+
+    	return view('pages.companyoverview');//->with('contact',$contact);
+    }
+    public function getMissionAndVision(Request $request)
+    {
+
+    	return view('pages.missionandvision');//->with('contact',$contact);
+    }
+    public function getManagement(Request $request)
+    {
+
+        return view('pages.management');//->with('contact',$contact);
+    }
 }

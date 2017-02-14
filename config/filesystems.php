@@ -56,12 +56,22 @@ return [
 
         'placeholder_img' => [
             'driver' => 'local',
-            'root'   => public_path() . '/uploads/img/placeholder/',
+            'root'   => public_path() . '/uploads/img/placeholder_img/',
         ],
 
         'slider_img' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/img/slider_img/',
+        ],
+
+        'misc_img' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/img/misc_img/',
+        ],
+
+        'management_img' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/img/management_img/',
         ],
 
         's3' => [

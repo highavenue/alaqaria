@@ -27,6 +27,8 @@ class ContactController extends Controller {
 	 */
 	public function create()
 	{
+		return redirect()->route('contacts.index');
+
 		return view('contacts.create');
 	}
 
@@ -38,6 +40,8 @@ class ContactController extends Controller {
 	 */
 	public function store(Request $request)
 	{
+		return redirect()->route('contacts.index');
+
 		$this->validate($request,[
 			'area_en' => 'required|max:255',
 	        'area_ar' => 'required|max:255',
@@ -190,6 +194,8 @@ class ContactController extends Controller {
 	 */
 	public function destroy($id)
 	{
+		return redirect()->route('contacts.index');
+		
 		$contact = Contact::findOrFail($id);
 		$contact->delete();
 

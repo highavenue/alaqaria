@@ -18,16 +18,28 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="" href="#"> Home </a>
+                        <a class="" href="{{ route('homePage') }}"> Home </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('homePage') }}"> Home 1 </a>
+                                <a href="{{ route('aboutUs') }}"> About Us </a>
                             </li>
                             <li>
-                                <a href="index-2.html"> Home 2 </a>
+                                <a href="{{ route('companyOverview') }}"> Company Overview </a>
                             </li>
+                            <li>
+                                <a href="{{ route('missionAndVision') }}"> Mission & Vision </a>
+                            </li>
+
                         </ul>
 
+                    </li>
+                    <li>
+                        <a href="#">Management </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('management') }}"> Board of Director </a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="#">Property </a>
