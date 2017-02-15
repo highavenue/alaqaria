@@ -63,9 +63,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="features.html">Features             </a>
-                    </li>
+                   
                     <li>
                         <a href="blog.html">Blog                          </a>
                         <ul class="dropdown-menu">
@@ -92,6 +90,10 @@
                         </ul>
 
                     </li>
+                     <li>
+                        <a href="{{ route('events') }}">Events</a>
+                    </li>
+
                     <li>
                         <a class="" href="{{ route('contactUs') }}">ContactUs</a>
                     </li>

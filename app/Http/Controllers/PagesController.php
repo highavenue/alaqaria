@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contact;
+use App\Event;
 use Session;
 
 class PagesController extends Controller
@@ -60,4 +61,11 @@ class PagesController extends Controller
 
         return view('pages.management');//->with('contact',$contact);
     }
+
+     public function getEvents(Request $request)
+    {
+        $events=Event::orderBy('id', 'desc')->paginate(1);
+        return view('pages.events',compact('events'));//->with('contact',$contact);
+    }
+    
 }

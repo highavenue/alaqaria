@@ -74,6 +74,11 @@ return [
             'root'   => public_path() . '/uploads/img/management_img/',
         ],
 
+        'event_img' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/img/event_img/',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => 'your-key',
