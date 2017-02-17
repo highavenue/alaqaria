@@ -33,8 +33,8 @@
                                 <td style="vertical-align: middle;">{{$event->id}}</td>
                                 <td style="vertical-align: middle;">{{$event->name_en}}</td>
                                 <td style="vertical-align: middle;">{{$event->name_ar}}</td>
-                    <td style="vertical-align: middle;">{{$event->description_en}}</td>
-                     <td style="vertical-align: middle;">{{$event->description_ar}}</td>
+                    <td style="vertical-align: middle;">{!!$event->description_en!!}</td>
+                     <td style="vertical-align: middle;" dir="rtl">{!!$event->description_ar!!}</td>
                     <td style="vertical-align: middle;"> <a class="btn btn-success glyphicon glyphicon-th" href="{{route('eventimages', $event->id) }}"> Gallery</a> </td>
                                 <td class="text-right" style="vertical-align: middle;">
                                     <a class="btn btn-xs btn-primary" href="{{ route('events.show', $event->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>

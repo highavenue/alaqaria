@@ -43,7 +43,7 @@
                 </div>
                     <div class="form-group">
                      <label for="desc_ar">DESC_AR</label>
-                     <p class="form-control-static">{!!$about->desc_ar!!}</p>
+                     <p class="form-control-static" dir="rtl">{!!$about->desc_ar!!}</p>
                 </div>
                     <div class="form-group">
                      <label for="image">IMAGE</label>

@@ -34,14 +34,14 @@
                     </div>
                     <div class="form-group @if($errors->has('desc_en')) has-error @endif">
                        <label for="desc_en-field">Desc_en</label>
-                    <textarea class="form-control" id="desc_en-field" rows="3" name="desc_en">{{ is_null(old("desc_en")) ? $about->desc_en : old("desc_en") }}</textarea>
+                    <textarea class="form-control textarea_en" id="desc_en-field" rows="3" name="desc_en">{{ is_null(old("desc_en")) ? $about->desc_en : old("desc_en") }}</textarea>
                        @if($errors->has("desc_en"))
                         <span class="help-block">{{ $errors->first("desc_en") }}</span>
                        @endif
                     </div>
                     <div class="form-group @if($errors->has('desc_ar')) has-error @endif">
                        <label for="desc_ar-field">Desc_ar</label>
-                    <textarea class="form-control" id="desc_ar-field" rows="3" name="desc_ar">{{ is_null(old("desc_ar")) ? $about->desc_ar : old("desc_ar") }}</textarea>
+                    <textarea class="form-control textarea_ar" id="desc_ar-field" rows="3" name="desc_ar">{{ is_null(old("desc_ar")) ? $about->desc_ar : old("desc_ar") }}</textarea>
                        @if($errors->has("desc_ar"))
                         <span class="help-block">{{ $errors->first("desc_ar") }}</span>
                        @endif

@@ -37,7 +37,7 @@
 
                     <div class="form-group @if($errors->has('description_en')) has-error @endif">
                        <label for="description_en-field">Description_en</label>
-                    <textarea class="form-control" id="description_en-field" rows="3" name="description_en">{{ is_null(old("description_en")) ? $event->description_en : old("description_en") }}</textarea>
+                    <textarea class="form-control textarea_en" id="description_en-field" rows="3" name="description_en">{{ is_null(old("description_en")) ? $event->description_en : old("description_en") }}</textarea>
                        @if($errors->has("description_en"))
                         <span class="help-block">{{ $errors->first("description_en") }}</span>
                        @endif
@@ -45,7 +45,7 @@
 
                      <div class="form-group @if($errors->has('description_ar')) has-error @endif">
                        <label for="description_ar-field">Description_ar</label>
-                    <textarea class="form-control" id="description_ar-field" rows="3" name="description_ar">{{ is_null(old("description_ar")) ? $event->description_ar : old("description_ar") }}</textarea>
+                    <textarea class="form-control textarea_ar" id="description_ar-field" rows="3" name="description_ar">{{ is_null(old("description_ar")) ? $event->description_ar : old("description_ar") }}</textarea>
                        @if($errors->has("description_ar"))
                         <span class="help-block">{{ $errors->first("description_ar") }}</span>
                        @endif

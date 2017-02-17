@@ -52,17 +52,24 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="#">Agents             </a>
+
+
+                      <li>
+                        <a href="#">Tenders</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="agents.html">Our Agents </a>
+                                <a href="{{route('howToTender')}}">How to Tender</a>
+                            </li>
+                             <li>
+                                <a href="{{route('tenderTermsAndConditions')}}">Terms & Conditions</a>
                             </li>
                             <li>
                                 <a href="agents_single.html"> Agent Single </a>
                             </li>
                         </ul>
                     </li>
+
+
                    
                     <li>
                         <a href="blog.html">Blog                          </a>

@@ -33,8 +33,8 @@
                                  <td style="vertical-align: middle;">{{$about->id}}</td>
                                  <td style="vertical-align: middle;">{{$about->subject_en}}</td>
                      <td style="vertical-align: middle;">{{$about->subject_ar}}</td>
-                     <td style="vertical-align: middle;">{{$about->desc_en}}</td>
-                     <td style="vertical-align: middle;">{{$about->desc_ar}}</td>
+                     <td style="vertical-align: middle;">{!!$about->desc_en!!}</td>
+                     <td style="vertical-align: middle;" dir="rtl">{!!$about->desc_ar!!}</td>
                      <td style="vertical-align: middle;"><img src="{{$about->imageURL}}" width="250"></td>
                                 <td class="text-right" style="vertical-align: middle;">
                                     <a class="btn btn-xs btn-primary" href="{{ route('abouts.show', $about->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>

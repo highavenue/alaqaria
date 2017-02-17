@@ -23,6 +23,9 @@ Route::get('/companyoverview',"PagesController@getCompanyOverview")->name('compa
 Route::get('/missionandvision',"PagesController@getMissionAndVision")->name('missionAndVision');
 Route::get('/management',"PagesController@getManagement")->name('management');
 Route::get('/events',"PagesController@getEvents")->name('events');
+Route::get('/howtotender',"PagesController@getHowtoTender")->name('howToTender');
+Route::get('/tendertermsandconditions',"PagesController@getTenderTermsAndConditions")->name('tenderTermsAndConditions');
+
 
 Route::post('/lang',"PagesController@setSession");
 
@@ -39,4 +42,5 @@ Route::group(['prefix' => 'admin'], function ()
 	//Route::resource("eventimages","EventImageController");
 	Route::get('/eventimages/{id}',"EventImageController@showImages")->name("eventimages");
 	Route::post('/eventimages', "EventImageController@store")->name("eventimagesstore");
+	Route::resource("tender_requirements","TenderRequirementController");
 });

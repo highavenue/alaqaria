@@ -32,12 +32,12 @@
                 </div>
                     <div class="form-group">
                      <label for="description_en">DESCRIPTION_EN</label>
-                     <p class="form-control-static">{{$event->description_en}}</p>
+                     <p class="form-control-static">{!!$event->description_en!!}</p>
                 </div>
                    </div>
                     <div class="form-group">
                      <label for="description_ar">DESCRIPTION_AR</label>
-                     <p class="form-control-static">{{$event->description_ar}}</p>
+                     <p class="form-control-static" dir="rtl">{!!$event->description_ar!!}</p>
                 </div>
             </form>
 

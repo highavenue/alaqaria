@@ -14,6 +14,26 @@
     <!-- Bootstrap core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
+    <!--Tinymce Text Area -->
+      <script src="/js/tinymce_4.5.3/tinymce.min.js"></script>
+          <script type="text/javascript">
+            
+             tinymce.init({
+                selector : ".textarea_en", // change this value according to your HTML
+                plugins: "lists",
+                directionality:'ltr',
+                menubar:false,
+                height : "400"
+            });
+              tinymce.init({
+                selector : ".textarea_ar", // change this value according to your HTML
+                plugins: "lists",
+                directionality:'rtl',
+                menubar:false,
+                height : "400"
+            });
+          </script>
+
     <!-- Custom styles for this template -->
     <!-- <link href="starter-template.css" rel="stylesheet"> -->
 

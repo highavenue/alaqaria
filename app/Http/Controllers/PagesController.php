@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contact;
 use App\Event;
+use App\TenderRequirement;
 use Session;
 
 class PagesController extends Controller
@@ -62,10 +63,22 @@ class PagesController extends Controller
         return view('pages.management');//->with('contact',$contact);
     }
 
-     public function getEvents(Request $request)
+    public function getEvents(Request $request)
     {
         $events=Event::orderBy('id', 'desc')->paginate(1);
         return view('pages.events',compact('events'));//->with('contact',$contact);
+    }
+
+    public function getHowtoTender(Request $request)
+    {
+        $tenderRequirement=TenderRequirement::find(1);
+        return view('pages.howtotender',compact('tenderRequirement'));//->with('contact',$contact);
+    }
+
+    public function getTenderTermsAndConditions(Request $request)
+    {
+        $termsandconditions=TenderRequirement::find(2);
+        return view('pages.tendertermsandconditions',compact('termsandconditions'));//->with('contact',$contact);
     }
     
 }
