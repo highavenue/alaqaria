@@ -54,6 +54,12 @@ return [
             'visibility' => 'public',
         ],
 
+        'tender_docs' => [
+            'driver' => 'local',
+            'root' => storage_path('tender_docs/'),
+            'visibility' => 'public',
+        ],
+
         'placeholder_img' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/img/placeholder_img/',

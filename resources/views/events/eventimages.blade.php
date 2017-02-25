@@ -12,12 +12,14 @@
     @include('error')
 
 
-     <?php $count=0; ?>
+     <?php $count=0; ?>                                 
           <div class="row">
         @foreach($images as $image)
             @if(++$count%4==0) <div class="row">@endif
-            <div class="col-md-3">
+            <div class="col-md-3 text-center">
               <img src="{{$image->imageURL}}" class="thumbnail" width="100%">
+              <p>{{$image->caption}}</p>
+              <a class="btn btn-danger " href="{{ route('eventimagesdelete',$image->id) }}"><span class="glyphicon glyphicon-remove"></span> Delete</a>
             </div>
             @if($count%4==0) </div>@endif
          @endforeach 
@@ -41,6 +43,15 @@
                  <span class="help-block">{{ $errors->first("image") }}</span>
                  @endif
                </div>
+
+               <div class="form-group @if($errors->has('caption')) has-error @endif">
+                       <label for="caption-field">caption</label>
+                    <input type="text" id="caption-field" name="caption" class="form-control" value="{{ old("caption") }}"/>
+                       @if($errors->has("caption"))
+                        <span class="help-block">{{ $errors->first("caption") }}</span>
+                       @endif
+                    </div>
+
 
                     
                 <div class="well well-sm">

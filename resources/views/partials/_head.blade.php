@@ -8,21 +8,21 @@
     <title>AlAQARIA @yield('title')</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet">
 
     <!-- Owl Carousel Assets -->
-    <link href="css/owl.carousel.css" rel="stylesheet">
-    <link href="css/owl.theme.css" rel="stylesheet">
-    <link href="css/owl.transitions.css" rel="stylesheet">
+    <link href="/css/owl.carousel.css" rel="stylesheet">
+    <link href="/css/owl.theme.css" rel="stylesheet">
+    <link href="/css/owl.transitions.css" rel="stylesheet">
 
     <!-- Flexslider CSS -->
-    <link href="css/flexslider.css" rel="stylesheet">
+    <link href="/css/flexslider.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/main_style.css" rel="stylesheet">
+    <link href="/css/main_style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
 

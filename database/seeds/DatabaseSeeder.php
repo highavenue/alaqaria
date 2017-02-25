@@ -19,5 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ManagementTableSeeder::class);
         $this->call(EventTableSeeder::class);
         $this->call(TenderRequirementTableSeeder::class);
+        $this->call(TenderTableSeeder::class);
+        
     }
 }

@@ -12,7 +12,7 @@
                 <!-- Logo -->
                {{--  <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo">
                 </a> --}}
-                <a class="navbar-brand" href="{{ route('homePage') }}"><img src="uploads/img/logo/logo.jpg" alt="logo" height="100">
+                <a class="navbar-brand" href="{{ route('homePage') }}"><img src="/uploads/img/logo/logo.jpg" alt="logo" height="100">
             </div>
             <!-- Navigation -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -97,9 +97,17 @@
                         </ul>
 
                     </li>
-                     <li>
-                        <a href="{{ route('events') }}">Events</a>
-                    </li>
+                    <li>
+                       {{-- <a style="text-decoration: none;cursor: pointer;" onclick="document.getElementById('myform').submit();">Events</a>
+                         <form id="myform" action="{{ route('events') }}" method="POST" style="display: none;">   
+                         {{csrf_field()}} 
+                             <input type="hidden" name="eventid" value="">        
+                         </form> --}}
+        
+                     <a href="{{route('events')}}">Events</a>
+                        
+                     
+                 </li>
 
                     <li>
                         <a class="" href="{{ route('contactUs') }}">ContactUs</a>

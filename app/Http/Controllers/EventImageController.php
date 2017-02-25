@@ -51,7 +51,8 @@ class EventImageController extends Controller
     {
 
         $this->validate($request,[
-            'image' => 'required | file | image'
+            'image' => 'required | file | image',
+            'caption' => 'sometimes | max:255'
             ]);
         $eventimage = new EventImage();
 
@@ -66,6 +67,7 @@ class EventImageController extends Controller
 
 
         $eventimage->image = $filename;
+        $eventimage->caption=$request->caption;
         $eventimage->event_id=$request->event_id;
         $eventimage->save();
 
@@ -121,5 +123,20 @@ class EventImageController extends Controller
     public function destroy($id)
     {
         //
+       
+    }
+
+    public function delete($imageid)
+    {
+        //
+        $image = EventImage::findOrFail($imageid);
+        $eventid=$image->event_id;
+        Storage::disk('event_img')->delete($image->image);
+        $image->delete();
+
+        return redirect()->route('eventimages',$eventid)->with('message', 'Item deleted successfully.');
+        // $images=EventImage::where('event_id','=',$eventid)->get();
+        // return view('events.eventimages')->withEventid($eventid)->withImages($images);
+        //return redirect()->route('sliders.index')->with('message', 'Item deleted successfully.');
     }
 }

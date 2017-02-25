@@ -27,7 +27,7 @@ class TenderRequirementController extends Controller {
 	 */
 	public function create()
 	{
-		return '';//view('tender_requirements.create');
+		return view('tender_requirements.create');
 	}
 
 	/**
