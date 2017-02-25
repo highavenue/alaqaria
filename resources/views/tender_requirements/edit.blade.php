@@ -4,7 +4,7 @@
 @endsection
 @section('header')
     <div class="page-header">
-        <h1><i class="glyphicon glyphicon-edit"></i> TenderRequirements / Edit #{{$tender_requirement->id}}</h1>
+        <h1><i class="glyphicon glyphicon-edit"></i>{{$tender_requirement->subject_en}} / Edit {{-- TenderRequirements / Edit #{{$tender_requirement->id}} --}}</h1>
     </div>
 @endsection
 

@@ -4,7 +4,7 @@
     <div class="page-header clearfix">
         <h1>
             <i class="glyphicon glyphicon-align-justify"></i> TenderRequirements
-            <a class="btn btn-success pull-right" href="{{ route('tender_requirements.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>
+           {{--  <a class="btn btn-success pull-right" href="{{ route('tender_requirements.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a> --}}
         </h1>
 
     </div>
@@ -37,11 +37,11 @@
                             <td class="text-right">
                                 <a class="btn btn-xs btn-primary" href="{{ route('tender_requirements.show', $tender_requirement->id) }}"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                                 <a class="btn btn-xs btn-warning" href="{{ route('tender_requirements.edit', $tender_requirement->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                                <form action="{{ route('tender_requirements.destroy', $tender_requirement->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
+                               {{--  <form action="{{ route('tender_requirements.destroy', $tender_requirement->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <button type="submit" class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-trash"></i> Delete</button>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                         @endforeach

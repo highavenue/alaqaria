@@ -17,10 +17,11 @@ class AboutController extends Controller {
 	 */
 	public function index()
 	{
+		return back();
 
-		$abouts = About::orderBy('id', 'asc')->paginate(10);
+		// $abouts = About::orderBy('id', 'asc')->paginate(10);
 
-		return view('abouts.index', compact('abouts'));
+		// return view('abouts.index', compact('abouts'));
 	}
 
 	/**
@@ -32,7 +33,7 @@ class AboutController extends Controller {
 	{
 		return redirect()->route('abouts.index');
 		
-		return view('abouts.create');
+		//return view('abouts.create');
 	}
 
 	/**
@@ -45,17 +46,17 @@ class AboutController extends Controller {
 	{
 		return redirect()->route('abouts.index');
 
-		$about = new About();
+		// $about = new About();
 
-		$about->subject_en = $request->input("subject_en");
-        $about->subject_ar = $request->input("subject_ar");
-        $about->desc_en = $request->input("desc_en");
-        $about->desc_ar = $request->input("desc_ar");
-        $about->image = $request->input("image");
+		// $about->subject_en = $request->input("subject_en");
+  //       $about->subject_ar = $request->input("subject_ar");
+  //       $about->desc_en = $request->input("desc_en");
+  //       $about->desc_ar = $request->input("desc_ar");
+  //       $about->image = $request->input("image");
 
-		$about->save();
+		// $about->save();
 
-		return redirect()->route('abouts.index')->with('message', 'Item created successfully.');
+		// return redirect()->route('abouts.index')->with('message', 'Item created successfully.');
 	}
 
 	/**
@@ -152,10 +153,10 @@ class AboutController extends Controller {
 	{
 		return redirect()->route('abouts.index');
 		
-		$about = About::findOrFail($id);
-		$about->delete();
+		// $about = About::findOrFail($id);
+		// $about->delete();
 
-		return redirect()->route('abouts.index')->with('message', 'Item deleted successfully.');
+		// return redirect()->route('abouts.index')->with('message', 'Item deleted successfully.');
 	}
 
 }

@@ -14,6 +14,23 @@ class EventTableSeeder extends Seeder {
 
 		//delete misc_img folder for create and seed new image into it
 		File::deleteDirectory($dest_path, true);
+
+
+		// To manage Event images. If no image was uploaded it will show this default image
+
+		$source_path=Storage::disk('placeholder_img')->getDriver()->getAdapter()->getPathPrefix();
+		$no_img=$source_path.'no_img.png';
+
+		$dest_path=Storage::disk('event_img')->getDriver()->getAdapter()->getPathPrefix();
+
+		//delete misc_img folder for create and seed new image into it
+		File::deleteDirectory($dest_path, true);
+
+
+		//$dest_file=$dest_path.$new_name;
+
+		File::copy($no_img,$dest_path.'no_img.png');
+
     }
 
 }

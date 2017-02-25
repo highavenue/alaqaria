@@ -1,15 +1,20 @@
 @extends('layout')
 @section('header')
 <div class="page-header">
-        <h1>TenderRequirements / Show #{{$tender_requirement->id}}</h1>
-        <form action="{{ route('tender_requirements.destroy', $tender_requirement->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
+        <h1>{{$tender_requirement->subject_en}} / Show{{-- TenderRequirements / Show #{{$tender_requirement->id}} --}}</h1>
+        {{-- <form action="{{ route('tender_requirements.destroy', $tender_requirement->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="btn-group pull-right" role="group" aria-label="...">
                 <a class="btn btn-warning btn-group" role="group" href="{{ route('tender_requirements.edit', $tender_requirement->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
                 <button type="submit" class="btn btn-danger">Delete <i class="glyphicon glyphicon-trash"></i></button>
-            </div>
-        </form>
+            </div> 
+        </form> --}}
+
+      <div class="btn-group pull-right" role="group" aria-label="...">
+          <a style="display: inline;" class="btn btn-warning btn-group" role="group" href="{{ route('tender_requirements.edit', $tender_requirement->id) }}"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+      </div> 
+
     </div>
 @endsection
 

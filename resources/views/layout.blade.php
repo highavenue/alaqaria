@@ -57,17 +57,51 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="#">Admin Panel</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </nav>
+
+                <li class="dropdown active">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{{ route('abouts.show',1) }}">About Us</a></li>
+                        <li><a href="{{ route('abouts.show',2) }}">Company Overview</a></li>
+                        <li><a href="{{ route('abouts.show',3) }}">Mission and Vision</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ route('sliders.index') }}">Slider</a></li>
+
+                    </ul>
+                </li>
+
+                 <li><a href="{{ route('managements.index') }}">Management</a></li>
+
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tenders<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{{ route('tenders.index') }}">Latest Tenders</a></li>
+                        <li><a href="{{ route('tender_receipts.index') }}">Tender Receipt</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ route('tender_requirements.show',1) }}">How to tender</a></li>
+                        <li><a href="{{ route('tender_requirements.show',2) }}">Terms and Conditions</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="{{ route('events.index') }}">Events</a></li>
+                 <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{{ route('contacts.show',1) }}">Contacts</a></li>
+                    </ul>
+                </li>
+
+                {{-- <li class="active"><a href="#">Home</a></li> --}}
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
 
     <div class="container">
         @yield('header')

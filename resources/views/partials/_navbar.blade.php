@@ -1,5 +1,5 @@
     <!-- Navigation -->
-    <nav class="navbar" role="navigation">
+    <nav class="navbar" role="navigation" style="box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);border-radius: 0px;">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">

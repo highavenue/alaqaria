@@ -1,7 +1,7 @@
 @extends('layout')
 @section('header')
 <div class="page-header">
-        <h1>Abouts / Show #{{$about->id}}</h1>
+        <h1>Abouts / Show / {{$about->subject_en}}</h1>
 {{--         <form action="{{ route('abouts.destroy', $about->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">

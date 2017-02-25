@@ -10,6 +10,7 @@ use App\TenderRequirement;
 use App\Tender;
 use Session;
 use Route;
+use Storage;
 
 class PagesController extends Controller
 {
@@ -93,7 +94,7 @@ class PagesController extends Controller
 
     public function getEvents(Request $request)
     {
-         $events=Event::all();
+         $events=Event::paginate(8);
         return view('pages.events',compact('events'));//->with('contact',$contact);
     }
 
@@ -101,6 +102,13 @@ class PagesController extends Controller
     {
         $event=Event::find($id);
         $images = EventImage::where('event_id','=',$id)->get();
+           
+        if(count($images)==0)
+        {
+            $image=new EventImage();
+            $image->image='no_img.png';
+            $images[]=$image;
+        }
         
      return view('pages.eventsingle',compact('event','images'));
            // return Redirect()->back()->withEvent($event)->withEvents($events);

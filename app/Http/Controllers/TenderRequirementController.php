@@ -27,7 +27,8 @@ class TenderRequirementController extends Controller {
 	 */
 	public function create()
 	{
-		return view('tender_requirements.create');
+		return redirect()->route('tender_requirements.index');
+		//return view('tender_requirements.create');
 	}
 
 	/**
@@ -38,16 +39,18 @@ class TenderRequirementController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		$tender_requirement = new TenderRequirement();
+		return redirect()->route('tender_requirements.index');
+		
+		// $tender_requirement = new TenderRequirement();
 
-		$tender_requirement->subject_en = $request->input("subject_en");
-        $tender_requirement->subject_ar = $request->input("subject_ar");
-        $tender_requirement->desc_en = $request->input("desc_en");
-        $tender_requirement->desc_ar = $request->input("desc_ar");
+		// $tender_requirement->subject_en = $request->input("subject_en");
+  //       $tender_requirement->subject_ar = $request->input("subject_ar");
+  //       $tender_requirement->desc_en = $request->input("desc_en");
+  //       $tender_requirement->desc_ar = $request->input("desc_ar");
 
-		$tender_requirement->save();
+		// $tender_requirement->save();
 
-		return redirect()->route('tender_requirements.index')->with('message', 'Item created successfully.');
+		// return redirect()->route('tender_requirements.index')->with('message', 'Item created successfully.');
 	}
 
 	/**
@@ -105,10 +108,11 @@ class TenderRequirementController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		$tender_requirement = TenderRequirement::findOrFail($id);
-		$tender_requirement->delete();
+		return redirect()->route('tender_requirements.index');
+		// $tender_requirement = TenderRequirement::findOrFail($id);
+		// $tender_requirement->delete();
 
-		return redirect()->route('tender_requirements.index')->with('message', 'Item deleted successfully.');
+		// return redirect()->route('tender_requirements.index')->with('message', 'Item deleted successfully.');
 	}
 
 }

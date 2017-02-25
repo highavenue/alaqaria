@@ -15,9 +15,13 @@ class ContactController extends Controller {
 	 */
 	public function index()
 	{
-		$contacts = Contact::orderBy('id', 'desc')->paginate(10);
+		$contact = Contact::first();
 
-		return view('contacts.index', compact('contacts'));
+		return view('contacts.show', compact('contact'));
+
+		// $contacts = Contact::orderBy('id', 'desc')->paginate(10);
+
+		// return view('contacts.index', compact('contacts'));
 	}
 
 	/**
@@ -27,9 +31,11 @@ class ContactController extends Controller {
 	 */
 	public function create()
 	{
-		return redirect()->route('contacts.index');
+		$contact = Contact::first();
 
-		return view('contacts.create');
+		return view('contacts.show', compact('contact'));
+
+		//return view('contacts.create');
 	}
 
 	/**
@@ -40,9 +46,11 @@ class ContactController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		return redirect()->route('contacts.index');
+		$contact = Contact::first();
 
-		$this->validate($request,[
+		return view('contacts.show', compact('contact'));
+
+		/*$this->validate($request,[
 			'area_en' => 'required|max:255',
 	        'area_ar' => 'required|max:255',
 	        'street_en' => 'required|max:255',
@@ -93,7 +101,7 @@ class ContactController extends Controller {
         $contact->topbarcaption_ar=$request->input('topbarcaption_ar');
 		$contact->save();
 
-		return redirect()->route('contacts.index')->with('message', 'Item created successfully.');
+		return redirect()->route('contacts.index')->with('message', 'Item created successfully.');*/
 	}
 
 	/**
@@ -194,12 +202,14 @@ class ContactController extends Controller {
 	 */
 	public function destroy($id)
 	{
-		return redirect()->route('contacts.index');
+		$contact = Contact::first();
+
+		return view('contacts.show', compact('contact'));
 		
-		$contact = Contact::findOrFail($id);
+		/*$contact = Contact::findOrFail($id);
 		$contact->delete();
 
-		return redirect()->route('contacts.index')->with('message', 'Item deleted successfully.');
+		return redirect()->route('contacts.index')->with('message', 'Item deleted successfully.');*/
 	}
 
 }
