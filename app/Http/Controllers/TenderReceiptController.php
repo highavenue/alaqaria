@@ -7,6 +7,7 @@ use App\TenderReceipt;
 use Illuminate\Http\Request;
 use App\Tender;
 use Illuminate\Support\Facades;
+use Session;
 
 class TenderReceiptController extends Controller {
 
@@ -62,6 +63,7 @@ class TenderReceiptController extends Controller {
 
 		$tender_receipt->save();
 
+		Session::flash('create_msg','Item created successfully.');
 		return redirect()->route('tender_receipts.index')->with('message', 'Item created successfully.');
 	}
 
@@ -120,6 +122,7 @@ class TenderReceiptController extends Controller {
 
 		$tender_receipt->save();
 
+		Session::flash('update_msg','Item updated successfully.');
 		return redirect()->route('tender_receipts.index')->with('message', 'Item updated successfully.');
 	}
 
@@ -134,6 +137,7 @@ class TenderReceiptController extends Controller {
 		$tender_receipt = TenderReceipt::findOrFail($id);
 		$tender_receipt->delete();
 
+		Session::flash('delete_msg','Item deleted successfully.');
 		return redirect()->route('tender_receipts.index')->with('message', 'Item deleted successfully.');
 	}
 

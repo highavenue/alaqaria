@@ -4,9 +4,9 @@
     ?>
 @extends('layouts.master')
 @section('title','| Home Page')
-@section('bannerslider')
+{{-- @section('bannerslider')
 @include('partials._bannerslider')
-@endsection
+@endsection --}}
 
 @section('content')
 

@@ -26,9 +26,19 @@
                             </div>
                             <div class="control-group form-group">
                                 <div class="controls">
-                                    <label>Category </label>
+                                    <label>Category</label>
                                     <select name="State" class="form-control" required data-validation-required-message="Please select a state.">
-                                        <option value="" selected="selected">Select a Category</option>
+                                         <option value="" selected="selected">Industrial</option>
+                                        <option value="2">Commercial</option>
+                                        <option value="3">Household</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group form-group">
+                                <div class="controls">
+                                    <label>Type</label>
+                                    <select name="State" class="form-control" required data-validation-required-message="Please select a state.">
+                                        <option value="" selected="selected">Select a Type</option>
                                         <option value="AL">Labour Accomodation</option>
                                         <option value="AK">Dunes Mall & Commercial Shops</option>
                                         <option value="AZ">Bachelors Compound</option>
@@ -40,16 +50,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="control-group form-group">
-                                <div class="controls">
-                                    <label>Type </label>
-                                    <select name="State" class="form-control" required data-validation-required-message="Please select a state.">
-                                         <option value="" selected="selected">Industrial</option>
-                                        <option value="2">Commercial</option>
-                                        <option value="3">Household</option>
-                                    </select>
-                                </div>
-                            </div>
+
                              <div class="control-group form-group">
                                 <div class="controls">
                                     <label>Actions </label>

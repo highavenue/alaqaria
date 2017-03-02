@@ -7,6 +7,7 @@ use App\Management;
 use Illuminate\Http\Request;
 use Storage;
 use Image;
+use Session;
 
 class ManagementController extends Controller {
 
@@ -68,6 +69,7 @@ class ManagementController extends Controller {
 
 		$management->save();
 
+		Session::flash('create_msg','Item created successfully.');
 		return redirect()->route('managements.index')->with('message', 'Item created successfully.');
 	}
 
@@ -145,6 +147,7 @@ class ManagementController extends Controller {
 
 		$management->save();
 
+		Session::flash('update_msg','Item updated successfully.');
 		return redirect()->route('managements.index')->with('message', 'Item updated successfully.');
 	}
 
@@ -159,6 +162,8 @@ class ManagementController extends Controller {
 		$management = Management::findOrFail($id);
 		Storage::disk('management_img')->delete($management->image);
 		$management->delete();
+
+		Session::flash('delete_msg','Item deleted successfully.');
 
 		return redirect()->route('managements.index')->with('message', 'Item deleted successfully.');
 	}

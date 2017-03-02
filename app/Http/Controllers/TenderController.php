@@ -51,8 +51,8 @@ class TenderController extends Controller {
 			'tender_no' => 'required',
 	        'subject_en' => 'required | max:255',
 	        'subject_ar' => 'sometimes | max:255',
-	        'desc_en' => 'required | max:255',
-	        'desc_ar' => 'sometimes | max:255',
+	        'desc_en' => 'required',
+	        'desc_ar' => 'sometimes',
 	        'attachment' => 'required | file | mimes:pdf',
 	        'close_date'=>'required | date'
 				]);
@@ -63,8 +63,8 @@ class TenderController extends Controller {
 			'tender_no' => 'required',
 	        'subject_en' => 'required | max:255',
 	        'subject_ar' => 'required | max:255',
-	        'desc_en' => 'required | max:255',
-	        'desc_ar' => 'required | max:255',
+	        'desc_en' => 'required',
+	        'desc_ar' => 'required',
 	        'attachment' => 'required | file | mimes:pdf',
 	        'close_date'=>'required | date'
 			]);
@@ -95,6 +95,7 @@ class TenderController extends Controller {
 
 		$tender->save();
 
+		Session::flash('create_msg','Item created successfully.');
 		return redirect()->route('tenders.index')->with('message', 'Item created successfully.');
 	}
 
@@ -143,8 +144,8 @@ class TenderController extends Controller {
 			'tender_no' => 'required',
 	        'subject_en' => 'required | max:255',
 	        'subject_ar' => 'sometimes | max:255',
-	        'desc_en' => 'required | max:255',
-	        'desc_ar' => 'sometimes | max:255',
+	        'desc_en' => 'required',
+	        'desc_ar' => 'sometimes',
 	        'attachment' => 'sometimes | file | mimes:pdf',
 	        'close_date'=>'required | date'
 				]);
@@ -157,8 +158,8 @@ class TenderController extends Controller {
 			'tender_no' => 'required',
 	        'subject_en' => 'required | max:255',
 	        'subject_ar' => 'required | max:255',
-	        'desc_en' => 'required | max:255',
-	        'desc_ar' => 'required | max:255',
+	        'desc_en' => 'required',
+	        'desc_ar' => 'required',
 	        'attachment' => 'sometimes | file | mimes:pdf',
 	        'close_date'=>'required | date'
 			]);
@@ -200,7 +201,7 @@ class TenderController extends Controller {
 
 		$tender->save();
 
-
+		Session::flash('update_msg','Item updated successfully.');
 		return redirect()->route('tenders.index')->with('message', 'Item updated successfully.');
 	}
 
@@ -216,6 +217,7 @@ class TenderController extends Controller {
 		Storage::disk('tender_docs')->delete($tender->attachment);
 		$tender->delete();
 
+		Session::flash('delete_msg','Item deleted successfully.');
 		return redirect()->route('tenders.index')->with('message', 'Item deleted successfully.');
 	}
 

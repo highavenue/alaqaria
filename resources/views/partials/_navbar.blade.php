@@ -57,15 +57,9 @@
                       <li>
                         <a href="#">Tenders</a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{route('howToTender')}}">How to Tender</a>
-                            </li>
-                             <li>
-                                <a href="{{route('tenderTermsAndConditions')}}">Terms & Conditions</a>
-                            </li>
-                            <li>
-                                <a href="agents_single.html"> Agent Single </a>
-                            </li>
+                            <li><a href="{{ route('latestTenders') }}">Latest Tenders</a></li>
+                            <li><a href="{{route('howToTender')}}">How to Tender</a></li>
+                             <li><a href="{{route('tenderTermsAndConditions')}}">Terms & Conditions</a></li>
                         </ul>
                     </li>
 

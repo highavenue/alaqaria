@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Image;
 use File;
 use Storage;
+use Session;
 
 class SliderController extends Controller {
 
@@ -75,6 +76,7 @@ class SliderController extends Controller {
 
 		$slider->save();
 
+		Session::flash('create_msg','Item created successfully.');
 		return redirect()->route('sliders.index')->with('message', 'Item created successfully.');
 	}
 
@@ -154,7 +156,7 @@ class SliderController extends Controller {
         $slider->link = $request->input("link");
 
 		$slider->save();
-
+		Session::flash('update_msg','Item updated successfully.');
 		return redirect()->route('sliders.index')->with('message', 'Item updated successfully.');
 	}
 
@@ -170,6 +172,7 @@ class SliderController extends Controller {
 		Storage::disk('slider_img')->delete($slider->image);
 		$slider->delete();
 
+		Session::flash('delete_msg','Item deleted successfully.');
 		return redirect()->route('sliders.index')->with('message', 'Item deleted successfully.');
 	}
 

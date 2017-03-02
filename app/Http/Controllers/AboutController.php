@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Image;
 use File;
 use Storage;
+use Session;
+
 class AboutController extends Controller {
 
 	/**
@@ -139,8 +141,8 @@ class AboutController extends Controller {
         $about->image = $filename;
 
 		$about->save();
-
-		return redirect()->route('abouts.index')->with('message', 'Item updated successfully.');
+		Session::flash('update_msg','Item updated successfully.');
+		return redirect()->route('abouts.show',$id)->with('message', 'Item updated successfully.');
 	}
 
 	/**

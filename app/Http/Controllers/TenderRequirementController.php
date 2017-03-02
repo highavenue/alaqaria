@@ -5,6 +5,7 @@ use App\Http\Controllers\Controller;
 
 use App\TenderRequirement;
 use Illuminate\Http\Request;
+use Session;
 
 class TenderRequirementController extends Controller {
 
@@ -97,6 +98,7 @@ class TenderRequirementController extends Controller {
 
 		$tender_requirement->save();
 
+		Session::flash('update_msg','Item updated successfully.');
 		return redirect()->route('tender_requirements.index')->with('message', 'Item updated successfully.');
 	}
 

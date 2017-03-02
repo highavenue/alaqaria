@@ -1,7 +1,7 @@
 @extends('layout')
-
 @section('header')
     <div class="page-header clearfix">
+    @include('partials._message')
         <h1>
             <i class="glyphicon glyphicon-align-justify"></i> Sliders
             <a class="btn btn-success pull-right" href="{{ route('sliders.create') }}"><i class="glyphicon glyphicon-plus"></i> Create</a>

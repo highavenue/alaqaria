@@ -39,9 +39,15 @@ Route::get('/tendertermsandconditions',"PagesController@getTenderTermsAndConditi
 Route::get('latesttenders',"PagesController@getLatestTenders")->name('latestTenders');
 
 
+Route::post('latesttenders', "PagesController@getFileDownload")->name('filedownload');
+
 Route::post('/lang',"PagesController@setSession");
 
+// Route::get('storage/tender_docs/{filename}',function($filename){
 
+// 		$filepath= storage_path('tender_docs/').$filename;
+// 		return Response::download($filepath,$filename,['Content-Length : '.filesize($filepath)]);
+// 	})->name('adminTenderDownload');
 
 
 

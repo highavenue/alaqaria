@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tender extends Model
 {
     //
-     public function getdocURLAttribute()
+     public function getattachmentURLAttribute()
     {
     	return asset('storage/tender_docs/'.$this->attachment);
     }

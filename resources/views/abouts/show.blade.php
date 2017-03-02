@@ -1,6 +1,7 @@
 @extends('layout')
 @section('header')
 <div class="page-header">
+@include('partials._message')
         <h1>Abouts / Show / {{$about->subject_en}}</h1>
 {{--         <form action="{{ route('abouts.destroy', $about->id) }}" method="POST" style="display: inline;" onsubmit="if(confirm('Delete? Are you sure?')) { return true } else {return false };">
             <input type="hidden" name="_method" value="DELETE">
@@ -23,7 +24,6 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-
             <form action="#">
                 <div class="form-group">
                     <label for="nome">ID</label>
@@ -57,3 +57,5 @@
     </div>
 
 @endsection
+
+

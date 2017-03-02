@@ -8,9 +8,11 @@ use App\Event;
 use App\EventImage;
 use App\TenderRequirement;
 use App\Tender;
+use App\TenderReceipt;
 use Session;
 use Route;
 use Storage;
+use Response;
 
 class PagesController extends Controller
 {
@@ -87,7 +89,8 @@ class PagesController extends Controller
 
     public function getLatestTenders(Request $request)
     {
-        $tenders=Tender::all();
+        //$tenders=Tender::all();
+        $tenders=Tender::orderby('id','desc')->paginate(10);
         return view('pages.latesttenders',compact('tenders'));//->with('contact',$contact);
     }
     
@@ -115,5 +118,35 @@ class PagesController extends Controller
      
     }
 
+    public function getFileDownload(Request $request)
+    {
+        
+        // if($request->category==null)
+        // {
+            $tender_receipt=TenderReceipt::where('tender_id','=',$request->tender_id)->where('password','=',$request->password)->first();
+            if(count($tender_receipt)!=0)
+            {
+                $tender=Tender::where('id','=',$tender_receipt->tender_id)->first();
+                $filename=$tender->attachment;
+                $filepath= storage_path('tender_docs/').$filename;
+                Session::flash('success_msg',"Your download begins now...");
+                return Response::download($filepath,$filename,['Content-Length : '.filesize($filepath)]);       
+            }
+            else
+            {
+                Session::flash('warning_msg',"Password Missmatch!!");
+                return back();
+            }
+
+       // }
+
+       // else
+       // {
+       //      $tenders=Tender::paginate(2);
+       //      return view('pages.latesttenders',compact('tenders'));
+       // }
+        //  $events=Event::paginate(8);
+        // return view('pages.events',compact('events'));//->with('contact',$contact);
+    }
 
 }
