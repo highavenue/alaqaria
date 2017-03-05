@@ -160,5 +160,6 @@
         });
     });
 </script>
+@yield('scripts_append')
 
 @endsection

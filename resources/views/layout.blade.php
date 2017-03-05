@@ -73,7 +73,7 @@
 
                     </ul>
                 </li>
-
+                <li><a href="{{ route('properties.index') }}">Property</a></li>
                  <li><a href="{{ route('managements.index') }}">Management</a></li>
 
                 <li class="dropdown">

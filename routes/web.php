@@ -1,5 +1,7 @@
 <?php
 use App\Event;
+use App\Property;
+use App\Category;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,16 +25,9 @@ Route::get('/companyoverview',"PagesController@getCompanyOverview")->name('compa
 Route::get('/missionandvision',"PagesController@getMissionAndVision")->name('missionAndVision');
 Route::get('/management',"PagesController@getManagement")->name('management');
 
-// Route::get('/event/{id}', function($id) {
-//     //
-//      $event=Event::find($id);        
-
-//      return view('pages.events',compact('event'));
-// });
 
 Route::get('/events',"PagesController@getEvents")->name('events');
 Route::get('/events/{id}',"PagesController@getEventSingle")->name('eventsingle');
-//Route::post('/events',"PagesController@getEvents")->name('events');
 
 Route::get('/howtotender',"PagesController@getHowtoTender")->name('howToTender');
 Route::get('/tendertermsandconditions',"PagesController@getTenderTermsAndConditions")->name('tenderTermsAndConditions');
@@ -43,12 +38,22 @@ Route::post('latesttenders', "PagesController@getFileDownload")->name('filedownl
 
 Route::post('/lang',"PagesController@setSession");
 
-// Route::get('storage/tender_docs/{filename}',function($filename){
+//using location id to retrive category id and name by joining property and category tables.
+Route::get('/loc_cat/{id}', function($id) {
 
-// 		$filepath= storage_path('tender_docs/').$filename;
-// 		return Response::download($filepath,$filename,['Content-Length : '.filesize($filepath)]);
-// 	})->name('adminTenderDownload');
+	$category = Property::groupBy('category_id')->select('category_id','name_en','name_ar',DB::raw('count(*) as total'))->where('location_id','=',$id)->join('categories','properties.category_id','=','categories.id')->get();
+	
+    //$property = Property::groupBy('category_id')->select('category_id',DB::raw('count(*) as total'))->where('location_id','=',$id)->get();
+    return $category;
+});
 
+Route::get('/loc_cat_type/{location_id}/{category_id}', function($location_id,$category_id) {
+
+	$type = Property::groupBy('category_id','type_id')->select('type_id','name_en','name_ar',DB::raw('count(*) as total'))->where('location_id','=',$location_id)->where('category_id','=',$category_id)->join('types','properties.type_id','=','types.id')->get();
+	
+    //$property = Property::groupBy('category_id')->select('category_id',DB::raw('count(*) as total'))->where('location_id','=',$id)->get();
+    return $type;
+});
 
 
 // ----------------admin routes--------------------//
@@ -75,5 +80,18 @@ Route::group(['prefix' => 'admin'], function ()
 		$filepath= storage_path('tender_docs/').$filename;
 		return Response::download($filepath,$filename,['Content-Length : '.filesize($filepath)]);
 	})->name('adminTenderDownload');
+
+	Route::resource("categories","CategoryController");
+	Route::resource("locations","LocationController");
+	Route::resource("types","TypeController");
+
+	Route::resource("properties","PropertyController");
+
+	//Route::resource("property_images","PropertyImageController");
+
+	Route::get('/property_images/{id}',"PropertyImageController@showImages")->name("propertyimages");
+	Route::post('/property_images', "PropertyImageController@store")->name("propertyimagesstore");
+
+	Route::get('/property_images/delete/{imageid}', "PropertyImageController@delete")->name("propertyimagesdelete");  //for delete one image from a particular property.
 
 });
