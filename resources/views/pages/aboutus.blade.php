@@ -60,5 +60,6 @@
 @endsection
 
 @section('scripts')
+@yield('searchbox_script')
 
 @endsection

@@ -9,6 +9,7 @@ use App\EventImage;
 use App\TenderRequirement;
 use App\Tender;
 use App\TenderReceipt;
+use App\Property;
 use Session;
 use Route;
 use Storage;
@@ -121,8 +122,6 @@ class PagesController extends Controller
     public function getFileDownload(Request $request)
     {
         
-        // if($request->category==null)
-        // {
             $tender_receipt=TenderReceipt::where('tender_id','=',$request->tender_id)->where('password','=',$request->password)->first();
             if(count($tender_receipt)!=0)
             {
@@ -137,16 +136,57 @@ class PagesController extends Controller
                 Session::flash('warning_msg',"Password Missmatch!!");
                 return back();
             }
+    }
 
-       // }
 
-       // else
-       // {
-       //      $tenders=Tender::paginate(2);
-       //      return view('pages.latesttenders',compact('tenders'));
-       // }
-        //  $events=Event::paginate(8);
-        // return view('pages.events',compact('events'));//->with('contact',$contact);
+    public function getPropertiesAll(Request $request)
+    {
+         $properties=Property::orderBy('id','desc')->paginate(6);
+         return view('pages.properties',compact('properties'));//->with('contact',$contact);
+    }
+
+    public function getPropertySingle($id)
+    {
+         $property=Property::find($id);
+         return view('pages.propertysingle',compact('property'));//->with('contact',$contact);
+    }
+
+    public function getProperties(Request $request)
+    {
+        $location_id=$request->location;
+        $category_id=$request->category;
+        $type_id=$request->type;
+        $action=$request->action;
+
+        if($location_id==null && $category_id==null && $type_id==null)
+        {
+            if($action=='all')
+                $properties=Property::orderBy('id','desc')->paginate(6);
+            else
+                $properties=Property::where('for','=',$action)->orderBy('id','desc')->paginate(6);
+        }
+        else if($category_id==null && $type_id==null)
+        {
+            if($action=='all')
+                $properties=Property::where('location_id','=',$location_id)->where('status','=',1)->orderBy('id','desc')->paginate(6);
+            else
+                $properties=Property::where('location_id','=',$location_id)->where('for','=',$action)->where('status','=',1)->orderBy('id','desc')->paginate(6);
+        }
+        else if($type_id==null)
+        {
+            if($action=='all')
+                $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('status','=',1)->orderBy('id','desc')->paginate(6);
+            else
+            $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('for','=',$action)->where('status','=',1)->orderBy('id','desc')->paginate(6);
+        }
+        else
+        {
+            if($action=='all')
+                $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('type_id','=',$type_id)->where('status','=',1)->orderBy('id','desc')->paginate(6);
+            else 
+            $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('type_id','=',$type_id)->where('for','=',$action)->where('status','=',1)->orderBy('id','desc')->paginate(6);
+        }
+        return view('pages.properties',compact('properties'));
     }
 
 }

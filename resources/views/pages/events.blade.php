@@ -48,7 +48,7 @@
           @if($count++%4==0) <div class="spacer-30"></div><div class="row">@endif
 
           <div class="col-md-3 ">
-            <a href="{{route('eventsingle',$event-> id)}}" style="cursor: pointer;">
+            <a href="{{route('eventsingle',$event->id)}}" style="cursor: pointer;">
               <img src="{{$image->imageURL}}" width="100%" style="height: 200px;" class="thumbnail">
             </a>
             <a href="#" class="text-center">{{$event->name_en}}<span class="badge pull-right">{{$img_count}} Photos</span></a>

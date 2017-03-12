@@ -29,6 +29,13 @@ Route::get('/management',"PagesController@getManagement")->name('management');
 Route::get('/events',"PagesController@getEvents")->name('events');
 Route::get('/events/{id}',"PagesController@getEventSingle")->name('eventsingle');
 
+
+Route::get('/properties',"PagesController@getPropertiesAll")->name('properties');
+Route::post('/properties',"PagesController@getProperties")->name('propertysearch');
+Route::get('/propertysingle/{id}',"PagesController@getPropertySingle")->name('propertysingle');
+
+
+
 Route::get('/howtotender',"PagesController@getHowtoTender")->name('howToTender');
 Route::get('/tendertermsandconditions',"PagesController@getTenderTermsAndConditions")->name('tenderTermsAndConditions');
 Route::get('latesttenders',"PagesController@getLatestTenders")->name('latestTenders');

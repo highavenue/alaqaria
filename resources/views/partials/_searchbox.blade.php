@@ -1,6 +1,7 @@
     <div class="srch_frm">
         <h3>Real Estate Search</h3>
-        <form name="sentMessage" id="contactForm" novalidate>
+        <form name="sentMessage" id="contactForm" novalidate action="{{ route('propertysearch') }}" method="POST">
+        {{csrf_field()}}
             {{-- <div class="control-group form-group">
                 <div class="controls">
                     <label>Keyword </label>
@@ -10,16 +11,16 @@
             </div> --}}
 
             <?php
-                $locations=App\Location::all();
+            $locations=App\Location::all();
             ?>
 
             <div class="control-group form-group">
                 <div class="controls">
                     <label>Location </label>
-                    <select name="State" class="form-control" required data-validation-required-message="Please select a state." onchange="" id="location">
-                    <option value="" selected="selected">Select Any Location</option>
+                    <select name="location" class="form-control" required data-validation-required-message="Please select a state." onchange="" id="location">
+                        <option value="" selected="selected">Select Any Location</option>
                         @foreach($locations as $location)
-                            <option value="{{ $location->id }}">{{$location->name_en.' - '.$location->name_ar}}</option>
+                        <option value="{{ $location->id }}">{{$location->name_en.' - '.$location->name_ar}}</option>
                         @endforeach
                        {{--  <option value="" selected="selected">Any Location</option>
                         <option value="AL">Al Khor</option>
@@ -36,32 +37,32 @@
             <div class="control-group form-group">
                 <div class="controls">
                     <label>Category</label>
-                    <select name="State" class="form-control" required data-validation-required-message="Please select a state." id="category">
-                         <option value="" selected="selected">Select a Category</option>
+                    <select name="category" class="form-control" required data-validation-required-message="Please select a state." id="category">
+                       <option value="" selected="selected">Select a Category</option>
                    {{--      <option value="2">Commercial</option>
-                        <option value="3">Household</option> --}}
-                    </select>
-                </div>
-            </div>
-            <div class="control-group form-group">
-                <div class="controls">
-                    <label>Type</label>
-                    <select name="State" class="form-control" required data-validation-required-message="Please select a state." id="type">
-                        <option value="" selected="selected">Select a Type</option>
-                    </select>
-                </div>
-            </div>
+                   <option value="3">Household</option> --}}
+               </select>
+           </div>
+       </div>
+       <div class="control-group form-group">
+        <div class="controls">
+            <label>Type</label>
+            <select name="type" class="form-control" required data-validation-required-message="Please select a state." id="type">
+                <option value="" selected="selected">Select a Type</option>
+            </select>
+        </div>
+    </div>
 
-             <div class="control-group form-group">
-                <div class="controls">
-                    <label>Actions </label>
-                    <select name="State" class="form-control" required data-validation-required-message="Please select a state.">
-                         <option value="" selected="idSelected">Industrial</option>
-                        <option value="" selected="selected">For Rent</option>
-                        <option value="2">For Sale</option>
-                    </select>
-                </div>
-            </div>
+    <div class="control-group form-group">
+        <div class="controls">
+            <label>Actions </label>
+            <select name="action" class="form-control" required data-validation-required-message="Please select a state.">
+                <option value="all" selected="selected">All</option>
+                <option value="sale" >For Sale</option>
+                <option value="rent" >For Rent</option>
+            </select>
+        </div>
+    </div>
            {{--  <div class="control-group form-group">
                 <div class="controls col-md-6 first">
                     <label>Actions </label>
@@ -128,8 +129,8 @@
     </div>
 
 
-@section('scripts_append')
-<script>
+    @section('searchbox_script')
+    <script>
     // $(document).ready(function() {
     //     $('select#location').on('change', function() {
     //         var optionSelected = $(this).find("option:selected");
@@ -171,13 +172,13 @@
         $('select#location').on('change', function() {
             var Selected = $(this).find("option:selected");
             idSelected  = Selected.val();
-            var url=("loc_cat/").concat(idSelected);
+            var url=("/loc_cat/").concat(idSelected);
             $.get( url)
-                .done(function( data ) {
-                    $('#category').empty();
-                    $('#category').append('<option value="" selected="selected">Select a Category</option>');
-                    $.each(data,function(index,subCatObj)
-                    {
+            .done(function( data ) {
+                $('#category').empty();
+                $('#category').append('<option value="" selected="selected">Select a Category</option>');
+                $.each(data,function(index,subCatObj)
+                {
                         //alert(subCatObj.name_en);
                         $('#category').append('<option value="'+subCatObj.category_id+'">'+subCatObj.name_en+' - '+subCatObj.name_ar+'</option>');
                     });
@@ -191,13 +192,13 @@
             idCategory=category.val();
             var location = $('select#location').find("option:selected");
             idLocation=location.val();
-            var url=("loc_cat_type/"+idLocation+'/'+idCategory); //).concat(idSelected);
+            var url=("/loc_cat_type/"+idLocation+'/'+idCategory); //).concat(idSelected);
             $.get( url)
-                .done(function( data ) {
-                    $('#type').empty();
-                    $('#type').append('<option value="" selected="selected">Select a Type</option>');
-                    $.each(data,function(index,subCatObj)
-                    {
+            .done(function( data ) {
+                $('#type').empty();
+                $('#type').append('<option value="" selected="selected">Select a Type</option>');
+                $.each(data,function(index,subCatObj)
+                {
                         //alert(subCatObj.name_en);
                         $('#type').append('<option value="'+subCatObj.type_id+'">'+subCatObj.name_en+' - '+subCatObj.name_ar+'</option>');
                     });

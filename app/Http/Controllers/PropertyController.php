@@ -51,8 +51,8 @@ class PropertyController extends Controller {
 			'location_id' => 'required',
 			'category_id' => 'required',
 			'type_id' => 'required',
-			'desc_en' => 'required | max:255',
-			'desc_ar' => 'required | max:255',
+			'desc_en' => 'required',
+			'desc_ar' => 'required',
 			'for' => 'required',
 			'status' => 'required'
 
@@ -119,8 +119,8 @@ class PropertyController extends Controller {
 			'location_id' => 'required',
 			'category_id' => 'required',
 			'type_id' => 'required',
-			'desc_en' => 'required | max:255',
-			'desc_ar' => 'required | max:255',
+			'desc_en' => 'required',
+			'desc_ar' => 'required',
 			'for' => 'required',
 			'status' => 'required'
 

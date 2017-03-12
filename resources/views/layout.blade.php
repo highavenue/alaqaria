@@ -73,7 +73,19 @@
 
                     </ul>
                 </li>
-                <li><a href="{{ route('properties.index') }}">Property</a></li>
+
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Properties<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{{ route('locations.index') }}">Location</a></li>
+                        <li><a href="{{ route('categories.index') }}">Category</a></li>
+                        <li><a href="{{ route('types.index') }}">Type</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{{ route('properties.index') }}">Property</a></li>
+                    </ul>
+                </li>
+
+
                  <li><a href="{{ route('managements.index') }}">Management</a></li>
 
                 <li class="dropdown">
@@ -96,8 +108,6 @@
                 </li>
 
                 {{-- <li class="active"><a href="#">Home</a></li> --}}
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>

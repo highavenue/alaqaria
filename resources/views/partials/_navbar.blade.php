@@ -42,14 +42,14 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">Property </a>
+                        <a href="{{ route('properties') }}">Property </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="property_listing.html"> Property Listings </a>
+                                <a href="{{ route('properties') }}"> Search </a>
                             </li>
-                            <li>
+                            {{-- <li>
                                 <a href="property_details.html"> Property Single </a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>
 
@@ -65,7 +65,7 @@
 
 
                    
-                    <li>
+                    {{-- <li>
                         <a href="blog.html">Blog                          </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -90,7 +90,7 @@
                             </li>
                         </ul>
 
-                    </li>
+                    </li> --}}
                     <li>
                        {{-- <a style="text-decoration: none;cursor: pointer;" onclick="document.getElementById('myform').submit();">Events</a>
                          <form id="myform" action="{{ route('events') }}" method="POST" style="display: none;">   

@@ -16,10 +16,12 @@
         <div class="row">
 
             @include('partials._titlesectionbar',['title' => 'Featured Properties','link_text' => 'View Properties','link'=>'#'])    
-
-            @include('partials._propertyboxview')
-            @include('partials._propertyboxview')
-            @include('partials._propertyboxview')
+            <?php 
+                $properties=App\Property::orderBy('id','desc')->take(3)->get();
+            ?>
+            @foreach($properties as $property)
+                @include('partials._propertyboxview',$property)
+            @endforeach
 
         </div>
         <!-- /.row -->
@@ -160,6 +162,6 @@
         });
     });
 </script>
-@yield('scripts_append')
+@yield('searchbox_script')
 
 @endsection
