@@ -63,6 +63,9 @@ Route::get('/loc_cat_type/{location_id}/{category_id}', function($location_id,$c
 });
 
 
+Route::resource("/msrs","MsrController");
+Route::resource("/vendorregistrations","VendorregistrationController");
+
 // ----------------admin routes--------------------//
 
 Route::group(['prefix' => 'admin'], function () 

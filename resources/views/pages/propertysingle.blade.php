@@ -109,6 +109,70 @@ if($img_count==0)
         </div>
         <!-- /.row -->
 
+
+
+
+        <div class="row">
+            <div class="col-md-12" style="padding: 0px;">
+                    <div class="cont_frm">
+                        <form name="sentMessage" id="contactForm" novalidate>
+                            <div class="control-group form-group col-md-6 first">
+                                <div class="controls">
+                                    <input type="text" class="form-control" id="name" required data-validation-required-message="Please enter your name." placeholder="Your Name">
+                                    <div class="in_ico">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <div class="controls">
+                                    <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter an email address." placeholder="Email Address">
+                                    <div class="in_ico">
+                                        <i class="fa fa-envelope-o"></i>
+                                    </div>
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <div class="controls">
+                                    <input type="number" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number." placeholder="Your Phone">
+                                    <div class="in_ico">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <div class="controls last">
+                                    <input type="text" class="form-control" id="web" required data-validation-required-message="Please enter your website." placeholder="Subject">
+                                    <div class="in_ico">
+                                        <i class="fa fa-pencil"></i>
+                                    </div>
+                                    <p class="help-block"></p>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="control-group form-group col-md-6">
+                                <div class="controls">
+                                    <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none" placeholder="Message"></textarea>
+                                    <div class="in_ico">
+                                        <i class="fa fa-paper-plane-o"></i>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div id="success"></div>
+                            <!-- For success/fail messages -->
+                        </form>
+                    </div>
+                </div>
+        </div>
+
+
+
+
+
         <div class="spacer-30"></div>
 
 

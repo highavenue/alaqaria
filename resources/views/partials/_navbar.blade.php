@@ -55,7 +55,7 @@
 
 
                       <li>
-                        <a href="#">Tenders</a>
+                        <a href="#">Procurements</a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('latestTenders') }}">Latest Tenders</a></li>
                             <li><a href="{{route('howToTender')}}">How to Tender</a></li>
@@ -102,6 +102,17 @@
                         
                      
                  </li>
+                    <li>
+                        <a class="" href="#">Careers</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Services</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/msrs/create" target="_blank">MSR</a></li>
+                            <li><a href="/vendorregistrations/create" target="_blank">Vender Registration</a></li>
+                        </ul>
+                    </li>
 
                     <li>
                         <a class="" href="{{ route('contactUs') }}">ContactUs</a>
