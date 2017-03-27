@@ -109,7 +109,7 @@
                     <li>
                         <a href="#">Services</a>
                         <ul class="dropdown-menu">
-                            <li><a href="/msrs/create" target="_blank">MSR</a></li>
+                            <li><a href="{{ route('msrForm') }}">MSR</a></li>
                             <li><a href="/vendorregistrations/create" target="_blank">Vender Registration</a></li>
                         </ul>
                     </li>

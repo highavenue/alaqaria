@@ -107,6 +107,16 @@
                     </ul>
                 </li>
 
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Services<span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                      <li><a href="{{ route('msrs.index') }}">View MSR Request</a></li>
+                      <li role="separator" class="divider"></li>
+                        <li><a href="{{ route('msrconstants.index') }}"> Set MSR Form Revision Data</a></li>
+                        <li><a href="{{ route('vendor_constants.index') }}"> Set Vendor Reg Form Revision Data</a></li>
+                    </ul>
+                </li>
+
                 {{-- <li class="active"><a href="#">Home</a></li> --}}
             </ul>
         </div><!--/.nav-collapse -->

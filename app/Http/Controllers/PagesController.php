@@ -10,6 +10,8 @@ use App\TenderRequirement;
 use App\Tender;
 use App\TenderReceipt;
 use App\Property;
+use App\Msr;
+use App\Msrconstant;
 use Session;
 use Route;
 use Storage;
@@ -21,7 +23,7 @@ class PagesController extends Controller
 	public function setSession(Request $request)
 	{
 
-		 
+
 		$lang=$request->input('action'); // it returns values:'ar' or 'en'
 		if($lang=='ar')
 		{
@@ -98,15 +100,15 @@ class PagesController extends Controller
 
     public function getEvents(Request $request)
     {
-         $events=Event::paginate(8);
+       $events=Event::paginate(8);
         return view('pages.events',compact('events'));//->with('contact',$contact);
     }
 
-     public function getEventSingle($id)
+    public function getEventSingle($id)
     {
         $event=Event::find($id);
         $images = EventImage::where('event_id','=',$id)->get();
-           
+
         if(count($images)==0)
         {
             $image=new EventImage();
@@ -114,45 +116,45 @@ class PagesController extends Controller
             $images[]=$image;
         }
         
-     return view('pages.eventsingle',compact('event','images'));
+        return view('pages.eventsingle',compact('event','images'));
            // return Redirect()->back()->withEvent($event)->withEvents($events);
-     
+
     }
 
     public function getFileDownload(Request $request)
     {
-        
-            $tender_receipt=TenderReceipt::where('tender_id','=',$request->tender_id)->where('password','=',$request->password)->first();
-            if(count($tender_receipt)!=0)
-            {
-                $tender=Tender::where('id','=',$tender_receipt->tender_id)->first();
-                $filename=$tender->attachment;
-                $filepath= storage_path('tender_docs/').$filename;
-                Session::flash('success_msg',"Your download begins now...");
-                return Response::download($filepath,$filename,['Content-Length : '.filesize($filepath)]);       
-            }
-            else
-            {
-                Session::flash('warning_msg',"Password Missmatch!!");
-                return back();
-            }
+
+        $tender_receipt=TenderReceipt::where('tender_id','=',$request->tender_id)->where('password','=',$request->password)->first();
+        if(count($tender_receipt)!=0)
+        {
+            $tender=Tender::where('id','=',$tender_receipt->tender_id)->first();
+            $filename=$tender->attachment;
+            $filepath= storage_path('tender_docs/').$filename;
+            Session::flash('success_msg',"Your download begins now...");
+            return Response::download($filepath,$filename,['Content-Length : '.filesize($filepath)]);       
+        }
+        else
+        {
+            Session::flash('warning_msg',"Password Missmatch!!");
+            return back();
+        }
     }
 
 
     public function getPropertiesAll(Request $request)
     {
-         $properties=Property::orderBy('id','desc')->paginate(6);
+       $properties=Property::orderBy('id','desc')->paginate(6);
          return view('pages.properties',compact('properties'));//->with('contact',$contact);
-    }
+     }
 
-    public function getPropertySingle($id)
-    {
-         $property=Property::find($id);
+     public function getPropertySingle($id)
+     {
+       $property=Property::find($id);
          return view('pages.propertysingle',compact('property'));//->with('contact',$contact);
-    }
+     }
 
-    public function getProperties(Request $request)
-    {
+     public function getProperties(Request $request)
+     {
         $location_id=$request->location;
         $category_id=$request->category;
         $type_id=$request->type;
@@ -177,16 +179,59 @@ class PagesController extends Controller
             if($action=='all')
                 $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('status','=',1)->orderBy('id','desc')->paginate(6);
             else
-            $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('for','=',$action)->where('status','=',1)->orderBy('id','desc')->paginate(6);
+                $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('for','=',$action)->where('status','=',1)->orderBy('id','desc')->paginate(6);
         }
         else
         {
             if($action=='all')
                 $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('type_id','=',$type_id)->where('status','=',1)->orderBy('id','desc')->paginate(6);
             else 
-            $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('type_id','=',$type_id)->where('for','=',$action)->where('status','=',1)->orderBy('id','desc')->paginate(6);
+                $properties=Property::where('location_id','=',$location_id)->where('category_id','=',$category_id)->where('type_id','=',$type_id)->where('for','=',$action)->where('status','=',1)->orderBy('id','desc')->paginate(6);
         }
         return view('pages.properties',compact('properties'));
     }
+
+
+    
+    public function getMsrForm()
+    {
+       return view('pages.msrform');
+   }
+   public function storeMsrForm(Request $request)
+   {
+    $msrconstant = Msrconstant::select('id')->orderBy('created_at', 'desc')->first();
+    $msr = new Msr();
+
+    $this->validate($request,[
+        'category' => 'required',
+        'requestedby' => 'required',
+        'location' => 'required',
+        'locationcenter' => 'required_unless:location,others',
+        'otherlocationcenter' => 'required_if:location,others',
+        'requestedfor' => 'required',
+        'contactno' => 'required',
+        'desc'=>'required | max:255'
+        ]);
+
+    $center = "";
+    if ($request->location != "others")
+        $center = $request->locationcenter;
+    else
+        $center = $request->otherlocationcenter;
+
+    $msr->msr_refno = $request->input("msr_refno");
+    $msr->requestedby = $request->input("requestedby");
+    $msr->category = $request->input("category");
+    $msr->location = $request->input("location");
+    $msr->center = $center;
+    $msr->requestedfor = $request->input("requestedfor");
+    $msr->contactno = $request->input("contactno");
+    $msr->desc = $request->input("desc");
+    $msr->msrconstant_id=$msrconstant->id;
+    $msr->save();
+
+    Session::flash('create_msg','Item created successfully.');
+}
+
 
 }

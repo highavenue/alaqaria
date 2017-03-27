@@ -126,7 +126,7 @@ return [
         'country_ar'=>'Country',
         'ph1'=>'Phone Number 1',
         'email'=>'Email',
-        'map'=> 'Map(iframe embed code)'
+        'map'=> 'Map(iframe embed code)'       
     ],
 
 ];

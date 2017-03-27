@@ -40,8 +40,10 @@ Route::get('/howtotender',"PagesController@getHowtoTender")->name('howToTender')
 Route::get('/tendertermsandconditions',"PagesController@getTenderTermsAndConditions")->name('tenderTermsAndConditions');
 Route::get('latesttenders',"PagesController@getLatestTenders")->name('latestTenders');
 
-
 Route::post('latesttenders', "PagesController@getFileDownload")->name('filedownload');
+
+Route::get('msrform',"PagesController@getMsrForm")->name('msrForm');
+Route::post('msrform',"PagesController@storeMsrForm")->name('storeMsrForm');
 
 Route::post('/lang',"PagesController@setSession");
 
@@ -63,10 +65,10 @@ Route::get('/loc_cat_type/{location_id}/{category_id}', function($location_id,$c
 });
 
 
-Route::resource("/msrs","MsrController");
+
 Route::resource("/vendorregistrations","VendorregistrationController");
 
-// ----------------admin routes--------------------//
+// ---------------------admin routes-----------------------------//
 
 Route::group(['prefix' => 'admin'], function () 
 {
@@ -103,5 +105,11 @@ Route::group(['prefix' => 'admin'], function ()
 	Route::post('/property_images', "PropertyImageController@store")->name("propertyimagesstore");
 
 	Route::get('/property_images/delete/{imageid}', "PropertyImageController@delete")->name("propertyimagesdelete");  //for delete one image from a particular property.
+	//msr form constant values(documentno,revisionno,date)
+	Route::resource("msrconstants","MsrconstantController");
+	Route::resource("/msrs","MsrController");
+	Route::get('/msrsfilter',"MsrController@sortOrderBy")->name("msrsfiltered");
+
+	Route::resource("vendor_constants","VendorConstantController");
 
 });

@@ -179,17 +179,6 @@
                             <div class="spacer-30"></div>
                             @endforeach 
 
-
-                            
-
-
-
-
-
-
-
-
-
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
                               <p>{{ $tenders->links() }}</p>

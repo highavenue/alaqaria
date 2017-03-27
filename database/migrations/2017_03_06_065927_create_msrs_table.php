@@ -14,29 +14,19 @@ class CreatemsrsTable extends Migration {
 	{
 		Schema::create('msrs', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('msr_refno');
+            $table->string('msr_refno')->nullable();
             $table->string('requestedby');
-            $table->string('perlocation');
-            $table->string('contact');
-            $table->string('reqstdfor');
-            $table->date('reqstdate');
-            $table->time('reqsttime');
-            $table->string('requestreceievedby');
+            $table->string('category');
             $table->string('location');
-            $table->string('requestcategory');
-            $table->text('desc_of_reqst');
-            $table->string('msrcategory');
-            $table->integer('amount');
-            $table->string('msrapprovals');
-            $table->string('preferredaccess');
-            $table->string('incidentreport');
-            $table->string('approvals');
-            $table->string('acprejectby');
-            $table->string('priority');
-            $table->text('reason_for_rejection');
-            $table->string('task');
-            $table->text('remarks');
-            $table->text('comments');
+            $table->string('center');
+            $table->string('requestedfor');
+            $table->string('contactno');
+            $table->string('desc');
+            $table->string('requeststatus')->nullable();
+            $table->text('comments')->nullable();
+            $table->string('workstatus')->nullable();
+            $table->integer('msrconstant_id')->unsigned();
+            $table->foreign('msrconstant_id')->references('id')->on('msrconstant')->onDelete('cascade');
             $table->timestamps();
         });
 	}

@@ -138,7 +138,7 @@
 
     td.first
     {
-        min-width: 120px;
+        min-width: 12 0px;
     }
     td.last{
         word-wrap:break-word
