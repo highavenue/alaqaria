@@ -44,7 +44,6 @@
                 <label class="radio-inline"><input type="radio" name="requestedfor" value="Services">SERVICES</label>    
               </div>
             </div>     
-
           </div>
 
           <div class="form-group  @if($errors->has('category')) has-error @endif">

@@ -85,6 +85,11 @@ return [
             'root'   => public_path() . '/uploads/img/event_img/',
         ],
 
+        'vendor_img' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/uploads/img/vendor_img/',
+        ],
+
         'property_img' => [
             'driver' => 'local',
             'root'   => public_path() . '/uploads/img/property_img/',

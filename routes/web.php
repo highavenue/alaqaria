@@ -45,6 +45,10 @@ Route::post('latesttenders', "PagesController@getFileDownload")->name('filedownl
 Route::get('msrform',"PagesController@getMsrForm")->name('msrForm');
 Route::post('msrform',"PagesController@storeMsrForm")->name('storeMsrForm');
 
+
+Route::get('vendorregform',"PagesController@getVendorRegForm")->name('vendorRegForm');
+Route::post('vendorregform',"PagesController@storeVendorRegForm")->name('VendorRegForm');
+
 Route::post('/lang',"PagesController@setSession");
 
 //using location id to retrive category id and name by joining property and category tables.
@@ -67,6 +71,7 @@ Route::get('/loc_cat_type/{location_id}/{category_id}', function($location_id,$c
 
 
 Route::resource("/vendorregistrations","VendorregistrationController");
+
 
 // ---------------------admin routes-----------------------------//
 
