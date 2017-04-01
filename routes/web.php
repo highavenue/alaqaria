@@ -20,6 +20,7 @@ use App\Category;
 
 Route::get('/',"PagesController@getHomePage")->name('homePage');
 Route::get('/contactus',"PagesController@getContactus")->name('contactUs');
+Route::post('/contactus',"PagesController@postContactus")->name('postContactUs');
 Route::get('/aboutus',"PagesController@getAboutus")->name('aboutUs');
 Route::get('/companyoverview',"PagesController@getCompanyOverview")->name('companyOverview');
 Route::get('/missionandvision',"PagesController@getMissionAndVision")->name('missionAndVision');

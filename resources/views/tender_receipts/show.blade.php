@@ -21,7 +21,7 @@
        <caption class="text-center" style="padding-bottom: 0px;">
             <div class="row">
                 <div class="col-md-12">
-                    <img src="http://alaqaria.com.qa/data/themes/default/images/logo.jpg" style="width: 100px">
+                    <img src="/uploads/img/logo/logo.jpg" style="width: 100px">
 <!--                    <p style="font-size: 20px; font-weight: bold">ALAQARIA</p> -->
                     <p style="font-size: 16px; font-weight: bold; padding-top: 5px;">Tender Document Download Details</p>
                 </div>

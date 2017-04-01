@@ -35,10 +35,26 @@ class CreatevendorregistrationsTable extends Migration {
             $table->string('telephoneno');
             $table->string('email');
             $table->string('faxno');
-            $table->string('natureofbusiness');
-            $table->string('natureofbusinessother')->nullable();
-            $table->string('fieldoftrade');
-            $table->string('fieldoftradetext');
+
+            // $table->string('natureofbusiness');
+            // $table->string('natureofbusinessother')->nullable();
+
+            $table->string('naturetrader')->nullable();
+            $table->string('naturemanufacturer')->nullable();
+            $table->string('naturecontractor')->nullable();
+            $table->string('naturedistributor')->nullable();
+            $table->string('natureconsultant')->nullable();
+            $table->string('natureserviceprovider')->nullable();
+            $table->string('natureothers')->nullable();
+
+
+            $table->string('fieldproduct')->nullable();
+            $table->text('fieldproducttext')->nullable();
+            $table->string('fieldservice')->nullable();
+            $table->text('fieldservicetext')->nullable();
+            $table->string('fieldwork')->nullable();
+            $table->text('fieldworktext')->nullable();
+
             $table->string('personname');
             $table->string('personjobtitle');
             $table->string('personemail');
@@ -49,6 +65,7 @@ class CreatevendorregistrationsTable extends Migration {
             // $table->string('tradelicencedoc');
             // $table->string('companysignaturedoc');
             // $table->string('otherdocument');
+            $table->text('docdetailstext');
             $table->string('noofyears')->nullable();
             $table->string('client1')->nullable();
             $table->string('location1')->nullable();

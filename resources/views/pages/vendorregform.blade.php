@@ -40,21 +40,21 @@
                   <td colspan="7" style="text-align:center;" class="label-info"><label>SECTION I:GENERAL INFORMATION</label></td>
                 </tr>
                 <tr>
-                  <td width="30%" @if($errors->has('companyregisteredname')) has-error @endif><label>COMPANY REGISTERED NAME</label></td>
-                  <td colspan="6"><input class="form-control" id="companyregisteredname" name="companyregisteredname" type="text" placeholder="official name to appear on invoices">@if($errors->has("companyregisteredname"))
+                  <td width="30%"><label>COMPANY REGISTERED NAME</label></td>
+                  <td colspan="6" class="@if($errors->has('companyregisteredname')) has-error @endif"><input class="form-control" id="companyregisteredname" name="companyregisteredname" type="text" placeholder="official name to appear on invoices">@if($errors->has("companyregisteredname"))
                 <span class="help-block" style="color: red;" >{{ "company register name field is required" }}</span>
                 @endif</td>
                 </tr>
                 <tr>
-                  <td width="30%" @if($errors->has('companyparentname')) has-error @endif><label>COMPANY PARENT NAME</label></td>
-                  <td colspan="6"><input class="form-control" id="companyparentname" name="companyparentname" type="text">@if($errors->has("companyparentname"))
+                  <td width="30%"><label>COMPANY PARENT NAME</label></td>
+                  <td colspan="6" class="@if($errors->has('companyparentname')) has-error @endif"><input class="form-control" id="companyparentname" name="companyparentname" type="text">@if($errors->has("companyparentname"))
                 <span class="help-block" style="color: red;" >{{ "company parent name field is required" }}</span>
                 @endif</td>
                 </tr>
 
                 <tr>
-                  <td width="30%" @if($errors->has('establishment')) has-error @endif><label>COUNTRY OF ESTABLISHMENT</label></td>
-                  <td colspan="6"><label><input type="radio" name="establishment" class="country" value="qatar" checked="checked">QATAR</label>
+                  <td width="30%"><label>COUNTRY OF ESTABLISHMENT</label></td>
+                  <td colspan="6" class="@if($errors->has('establishment')) has-error @endif"><label><input type="radio" name="establishment" class="country" value="qatar" checked="checked">QATAR</label>
                   <label><input type="radio" name="establishment" class="country" value="gcc">GCC</label>
                   <label><input type="radio" name="establishment" class="country" value="others" id="countryothers">OTHERS(pls.specify)</label>
                     <input class="form-control" id="establishmenttxt" name="establishment" type="text" disabled="disabled">@if($errors->has("establishment"))
@@ -63,8 +63,8 @@
                   </tr>
 
                   <tr>
-                  <td width="30%" @if($errors->has('classification')) has-error @endif><label>LEGAL CLASSIFICATION</label></td>
-                    <td colspan="6"><label><input type="radio" name="classification" class="legal" value="individual" checked="checked">INDIVIDUAL OWNED</label>
+                  <td width="30%"><label>LEGAL CLASSIFICATION</label></td>
+                    <td colspan="6" class="@if($errors->has('classification')) has-error @endif"><label><input type="radio" name="classification" class="legal" value="individual" checked="checked">INDIVIDUAL OWNED</label>
                     <label><input type="radio" name="classification" class="legal" value="partnership" >PARTNERSHIP</label>
                     <label><input type="radio" name="classification" class="legal" value="joint">JOINT VENTURE</label>
                     <label><input type="radio" name="classification" class="legal" value="limitedliability">LIMITED LIABILITY COMPANY</label>
@@ -100,80 +100,106 @@
                     <td><input class="form-control" id="postalcode" name="postalcode" type="text"></td>
                   </tr>
                   <tr>
-                    <td @if($errors->has('boxno')) has-error @endif><label>PO BOX NO.</label></td>
-                    <td colspan="2"><input class="form-control" id="boxno" name="boxno" type="text">@if($errors->has("boxno"))
+                    <td><label>PO BOX NO.</label></td>
+                    <td colspan="2" class="@if($errors->has('boxno')) has-error @endif"><input class="form-control" id="boxno" name="boxno" type="text">@if($errors->has("boxno"))
                 <span class="help-block" style="color: red;" >{{ "PO boxno field is required" }}</span>
                 @endif</td>
-                    <td @if($errors->has('telephoneno')) has-error @endif><label>TELEPHONE NUMBER</label></td>
-                    <td colspan="3"><input class="form-control" id="telephoneno" name="telephoneno" type="text">@if($errors->has("telephoneno"))
+                    <td><label>TELEPHONE NUMBER</label></td>
+                    <td colspan="3" class="@if($errors->has('telephoneno')) has-error @endif"><input class="form-control" id="telephoneno" name="telephoneno" type="text">@if($errors->has("telephoneno"))
                 <span class="help-block" style="color: red;" >{{ "telephoneno field is required" }}</span>
                 @endif</td>
                   </tr>
                   <tr>
-                    <td @if($errors->has('email')) has-error @endif><label>EMAIL ADDRESS</label></td>
-                    <td colspan="2"><input class="form-control" id="email" name="email" type="text">@if($errors->has("email"))
+                    <td><label>EMAIL ADDRESS</label></td>
+                    <td colspan="2" class="@if($errors->has('email')) has-error @endif"><input class="form-control" id="email" name="email" type="text">@if($errors->has("email"))
                 <span class="help-block" style="color: red;" >{{ "email field is required" }}</span>
                 @endif</td>
 
-                    <td @if($errors->has('faxno')) has-error @endif><label>FAX NUMBER</label></td>
-                    <td colspan="3"><input class="form-control" id="faxno" name="faxno" type="text">@if($errors->has("faxno"))
+                    <td><label>FAX NUMBER</label></td>
+                    <td colspan="3" class="@if($errors->has('faxno')) has-error @endif"><input class="form-control" id="faxno" name="faxno" type="text">@if($errors->has("faxno"))
                 <span class="help-block" style="color: red;" >{{ "faxno field is required" }}</span>
                 @endif</td>
                   </tr>
 
-                  <tr>
-                    <td style="vertical-align: middle;" @if($errors->has('natureofbusiness[]')) has-error @endif><label>NATURE OF BUSINESS</label></td>
-                    <td colspan="6"><label><input type="checkbox" name="natureofbusiness[]" value="trader">TRADER</label>
-                    <label><input type="checkbox" name="natureofbusiness[]" value="manufacturer">MANUFACTURER</label>
-                    <label><input type="checkbox" name="natureofbusiness[]" value="contractor">CONTRACTOR</label>                   
-                    <label><input type="checkbox" name="natureofbusiness[]" value="distributor">DISTRIBUTOR</label>
-                    <label><input type="checkbox" name="natureofbusiness[]" value="consultant">CONSULTANT</label>
-                    <label><input type="checkbox" name="natureofbusiness[]" value="serviceprovider">SERVICE PROVIDER</label>
-                    <label><input type="checkbox" name="natureofbusiness[]" value="others">OTHERS(please specify)</label>
-                      <input class="form-control" id="natureofbusiness" name="natureofbusinessother" type="text"> 
 
-                       @if($errors->has("natureofbusiness"))
+
+
+
+
+
+                  <tr>
+                    <td style="vertical-align: middle;" ><label>NATURE OF BUSINESS</label></td>
+                    <td colspan="6" class="@if($errors->has('natureothers')) has-error @endif"><label><input type="checkbox" name="naturetrader" value="trader" @if($errors->has('naturetrader')) has-error @endif>TRADER</label>
+                    <label><input type="checkbox" name="naturemanufacturer" value="manufacturer" @if($errors->has('naturemanufacturer')) has-error @endif>MANUFACTURER</label>
+                    <label><input type="checkbox" name="naturecontractor" value="contractor" @if($errors->has('naturecontractor')) has-error @endif>CONTRACTOR</label>                   
+                    <label><input type="checkbox" name="naturedistributor" value="distributor" @if($errors->has('naturedistributor')) has-error @endif>DISTRIBUTOR</label>
+                    <label><input type="checkbox" name="natureconsultant" value="consultant" @if($errors->has('natureconsultant')) has-error @endif>CONSULTANT</label>
+                    <label><input type="checkbox" name="natureserviceprovider" value="serviceprovider" @if($errors->has('natureserviceprovider')) has-error @endif>SERVICE PROVIDER</label>
+                    <label><input type="checkbox" name="natureotherscheck" value="others">OTHERS(please specify)</label>
+                      <input class="form-control" id="natureothers" name="natureothers" type="text"  @if($errors->has('natureotherscheck')) has-error @endif>  
+
+                       @if($errors->has("naturetrader") || $errors->has("naturemanufacturer") ||$errors->has("naturecontractor") || $errors->has("naturedistributor") || $errors->has("natureconsultant") || $errors->has("natureserviceprovider") || $errors->has("natureotherscheck"))
                 <span class="help-block" style="color: red;" >{{ "atleast one field is required" }}</span>
-                @endif</td>
+                @endif
+
+                @if($errors->has("natureothers"))
+                <span class="help-block" style="color: red;" >{{ "please enter other field" }}</span>
+                @endif                   
+                </td>
                     </tr>
+
 
 
                     <tr>
-                      <td  style="vertical-align: middle;"  @if($errors->has('fieldoftrade')) has-error @endif><label>FIELD OF TRADE</label></td>
-                      <td colspan="6"><label><input type="radio" name="fieldoftrade" value="products" checked="checked">PRODUCTS</label>
-                     
-                      <label><input type="radio" name="fieldoftrade" value="services">SERVICES</label>
-                      
-                      <label><input type="radio" name="fieldoftrade" value="works">WORKS</label>  @if($errors->has("fieldoftrade"))
-                <span class="help-block" style="color: red;" >{{ "field of trade field is required" }}</span>
-                @endif<br>
-                    
-                       <label @if($errors->has('fieldoftradetext')) has-error @endif> PLEASE SPECIFY</label><input class="form-control" id="fieldoftradetext" name="fieldoftradetext" type="text">@if($errors->has("fieldoftradetext"))
-                <span class="help-block" style="color: red;" >{{ "this field is required" }}</span>
-                @endif
-                       </td>                     
+                      <td rowspan="3" style="vertical-align: middle;"><label>FIELD OF TRADE</label></td>
+
+                      <td colspan="2"><label><input type="checkbox" name="fieldproduct" value="products"@if($errors->has('fieldproduct')) has-error @endif>PRODUCTS(please specify)</label></td>
+                      <td colspan="4"><textarea name="fieldproducttext" style="width: 100%;@if($errors->has('fieldproducttext'))  border-color: red; @endif" ></textarea>@if($errors->has("fieldproducttext"))
+                        <span class="help-block" style="color: red;" >{{ "this field is required" }}</span>
+                        @endif</td>
                     </tr>
+                    <tr>
+                    <td colspan="2"><label><input type="checkbox" name="fieldservice" value="services" @if($errors->has('fieldservice')) has-error @endif>SERVICES(please specify)</label></td>
+                     <td colspan="4"><textarea name="fieldservicetext" style="width: 100%;@if($errors->has('fieldservicetext')) border-color: red; @endif"></textarea>@if($errors->has("fieldservicetext"))
+                        <span class="help-block" style="color: red;" >{{ "this field is required" }}</span>
+                        @endif</td>
+                    </tr>
+                    <tr>
+                    <td colspan="2"><label><input type="checkbox" name="fieldwork" value="works" @if($errors->has('fieldwork')) has-error @endif>WORKS(please specify)</label></td>
+                      <td colspan="4"><textarea name="fieldworktext" style="width: 100%;@if($errors->has('fieldworktext')) border-color: red; @endif"></textarea>
+
+                        @if($errors->has("fieldproduct") || $errors->has("fieldservice") || $errors->has("fieldwork"))
+                        <span class="help-block" style="color: red;" >{{ "atleast one field of trade is required" }}</span>
+                        @endif
+
+                      @if($errors->has("fieldworktext"))
+                        <span class="help-block" style="color: red;" >{{ "this field is required" }}</span>
+                        @endif</td>
+                   </tr>
 
 
-                      <td @if($errors->has('personname')) has-error @endif><label>NAME OF CONTACT PERSON</label></td>
-                      <td colspan="2"><input class="form-control" id="personname" name="personname" type="text">@if($errors->has("personname"))
+
+
+
+                      <td><label>NAME OF CONTACT PERSON</label></td>
+                      <td class="@if($errors->has('personname')) has-error @endif" colspan="2"><input class="form-control" id="personname" name="personname" type="text">@if($errors->has("personname"))
                 <span class="help-block" style="color: red;" >{{ "name of contact person field is required" }}</span>
                 @endif</td>
 
-                      <td @if($errors->has('personjobtitle')) has-error @endif><label>JOB TITLE</label></td>
-                      <td colspan="3"><input class="form-control" id="personjobtitle" name="personjobtitle" type="text">@if($errors->has("personjobtitle"))
+                      <td><label>JOB TITLE</label></td>
+                      <td class="@if($errors->has('personjobtitle')) has-error @endif" colspan="3"><input class="form-control" id="personjobtitle" name="personjobtitle" type="text">@if($errors->has("personjobtitle"))
                 <span class="help-block" style="color: red;" >{{ "job title field is required" }}</span>
                 @endif</td>
                     </tr>
 
                     <tr>
-                      <td @if($errors->has('personemail')) has-error @endif><label>EMAIL ADDRESS</label></td>
-                      <td colspan="2"><input class="form-control" id="personemail" name="personemail" type="text">@if($errors->has("personemail"))
+                      <td><label>EMAIL ADDRESS</label></td>
+                      <td class="@if($errors->has('personemail')) has-error @endif" colspan="2"><input class="form-control" id="personemail" name="personemail" type="text">@if($errors->has("personemail"))
                 <span class="help-block" style="color: red;" >{{ "contact person email field is required" }}</span>
                 @endif</td>
 
-                      <td @if($errors->has('personmobileno')) has-error @endif><label>MOBILE NO</label></td>
-                      <td colspan="3"><input class="form-control" id="personmobileno" name="personmobileno" type="text">@if($errors->has("personmobileno"))
+                      <td><label>MOBILE NO</label></td>
+                      <td class="@if($errors->has('personmobileno')) has-error @endif" colspan="3"><input class="form-control" id="personmobileno" name="personmobileno" type="text">@if($errors->has("personmobileno"))
                 <span class="help-block" style="color: red;" >{{ "contact person mobile no field is required" }}</span>
                 @endif</td>
                     </tr>
@@ -186,7 +212,7 @@
                       <td colspan="3"><input class="form-control" id="personfaxno" name="personfaxno" type="text"></td>
                     </tr>
                     <tr>
-                      <td colspan="7"><label>UPLOAD DOCUMENTS:</label></td>                  
+                      <td colspan="7"><label>UPLOAD DOCUMENTS: <font class="font-xsmall">The documents must be a file of type: jpeg, pdf, doc, docx</font></label></td>                  
                     </tr>
                     <tr>
                       <td>
@@ -194,7 +220,7 @@
                           <label for="crdoc-field">Company Registration(CR)</label>
                           <input type="file" id="crdoc-field" name="crdoc" class="form-control" value="{{ old("crdoc") }}"/>
                           @if($errors->has("crdoc"))
-                          <span class="help-block">{{ $errors->first("crdoc") }}</span>
+                          <span class="help-block">{{ 'Please upload CR Document' }}</span>
                           @endif
                         </div>
                       </td>
@@ -203,7 +229,7 @@
                           <label for="tradelicencedoc-field">Trade Licence</label>
                           <input type="file" id="tradelicencedoc-field" name="tradelicencedoc" class="form-control" value="{{ old("tradelicencedoc") }}"/>
                           @if($errors->has("tradelicencedoc"))
-                          <span class="help-block">{{ $errors->first("tradelicencedoc") }}</span>
+                          <span class="help-block">{{"Please upload Trade Licence Document"}}</span>
                           @endif
                         </div>
                       </td>
@@ -212,19 +238,62 @@
                           <label for="companysignaturedoc-field">Company Signature</label>
                           <input type="file" id="companysignaturedoc-field" name="companysignaturedoc" class="form-control" value="{{ old("companysignaturedoc") }}"/>
                           @if($errors->has("companysignaturedoc"))
-                          <span class="help-block">{{ $errors->first("companysignaturedoc") }}</span>
+                          <span class="help-block">{{ 'Please upload Company signature Document ' }}</span>
                           @endif
                         </div>
                       </td>
                       <td colspan="2">
-                        <div class="form-group @if($errors->has('otherdocument')) has-error @endif">
-                          <label for="otherdocument-field">Others(if any)</label>
-                          <input type="file" id="otherdocument-field" name="otherdocument" class="form-control" value="{{ old("otherdocument") }}"/>
-                          @if($errors->has("otherdocument"))
-                          <span class="help-block">{{ $errors->first("otherdocument") }}</span>
+                        <div class="form-group @if($errors->has('otherdocument1')) has-error @endif">
+                          <label for="otherdocument1-field">Others Documents 1(optional)</label>
+                          <input type="file" id="otherdocument1-field" name="otherdocument1" multiple="multiple" class="form-control" value="{{ old("otherdocument1") }}"/>
+                          @if($errors->has("otherdocument1"))
+                          <span class="help-block">{{ $errors->first("otherdocument1") }}</span>
                           @endif
                         </div>
                       </td>
+                    </tr>
+                      <tr>
+                      <td>
+                        <div class="form-group @if($errors->has('otherdocument2')) has-error @endif">
+                          <label for="otherdocument2-field">Others Documents 2(optional)</label>
+                          <input type="file" id="otherdocument2-field" name="otherdocument2" class="form-control" value="{{ old("otherdocument2") }}"/>
+                          @if($errors->has("otherdocument2"))
+                          <span class="help-block">{{ $errors->first("otherdocument2") }}</span>
+                          @endif
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div class="form-group @if($errors->has('otherdocument3')) has-error @endif">
+                          <label for="otherdocument3-field">Others Documents 3(optional)</label>
+                          <input type="file" id="otherdocument3-field" name="otherdocument3" class="form-control" value="{{ old("otherdocument3") }}"/>
+                          @if($errors->has("otherdocument3"))
+                          <span class="help-block">{{$errors->first("otherdocument3")}}</span>
+                          @endif
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div class="form-group @if($errors->has('otherdocument4')) has-error @endif">
+                          <label for="otherdocument4-field">Others Documents 4(optional)</label>
+                          <input type="file" id="otherdocument4-field" name="otherdocument4" class="form-control" value="{{ old("otherdocument4") }}"/>
+                          @if($errors->has("otherdocument4"))
+                          <span class="help-block">{{ $errors->first("otherdocument4")}}</span>
+                          @endif
+                        </div>
+                      </td>
+                      <td colspan="2">
+                        <div class="form-group @if($errors->has('otherdocument5')) has-error @endif">
+                          <label for="otherdocument5-field">Others Documents 5(optional)</label>
+                          <input type="file" id="otherdocument5-field" name="otherdocument5" class="form-control" value="{{ old("otherdocument5") }}"/>
+                          @if($errors->has("otherdocument5"))
+                          <span class="help-block">{{ $errors->first("otherdocument5") }}</span>
+                          @endif
+                        </div>
+                      </td>
+                    </tr>
+                     <tr>
+                      <td colspan="7"><label>Please specify the name of documents attached with</label>
+                      <textarea style="width: 100%" placeholder="Company Registration, Trade Licence etc." name="docdetailstext"></textarea>
+                      </td>                  
                     </tr>
                   </table>
                 </div>
@@ -237,20 +306,25 @@
 
 
                 <div class="table-responsive" class="form-group">       
-                  <table class="table table-bordered" class="table">
+                  <table class="table table-bordered">
                     <tr>
-                      <td colspan="8" style="text-align:center;" class="label-info"><label>SECTION II:EXPERIENCES & CERTIFICATIONS</label></td>
+                      <td colspan="7" style="text-align:center;" class="label-info"><label>SECTION II:EXPERIENCES & CERTIFICATIONS</label></td>
                     </tr>
+
                     <tr>
                       <td class="label-info"><label>NO.OF YEARS IN CURRENT BUSINESS</label></td>
                       <td ><label><input type="radio" name="noofyears" value="lessthanyear">LESS THAN A YEAR</label></td>
-                      <td ><label><input type="radio" name="noofyears" value="boaf">1-5</label></td>
-                      <td ><label><input type="radio" name="noofyears" value="bsat">6-10</label></td>
-                      <td ><label><input type="radio" name="noofyears" value="beaf">11-15</label></td>
-                      <td ><label><input type="radio" name="noofyears" value="bsatw">16-20</label></td>
-                      <td ><label><input type="radio" name="noofyears" value="gtwentyone">>21(Please Specify)</label>
-                        <input class="form-control" id="specifynoy" name="noofyears" type="text"></td>
+                      <td ><label><input type="radio" name="noofyears" value="1-5">1-5</label></td>
+                      <td ><label><input type="radio" name="noofyears" value="6-10">6-10</label></td>
+                      <td ><label><input type="radio" name="noofyears" value="11-15">11-15</label></td>
+                      <td ><label><input type="radio" name="noofyears" value="16-20">16-20</label></td>
+                      <td class="@if($errors->has('noofyearstxt')) has-error @endif"><label><input type="radio" name="noofyears" value=">21">&gt;21(Please Specify)<input class="form-control" id="specifynoy" name="noofyearstxt" type="text"></label>
+                       @if($errors->has("noofyearstxt"))
+                          <span class="help-block" style="color: red;">{{ $errors->first("noofyearstxt") }}</span>
+                          @endif
+                        </td>
                       </tr>
+
                       <tr>
                         <td rowspan="3" style="vertical-align: middle;" class="label-info"><label>THREE MAJOR CLIENTS FOR THE PAST 3 YEARS</label></td>
                         <td><label>CLIENT</label></td>
@@ -285,8 +359,8 @@
                 @endif
                       </tr>
                       <tr>
-                        <td class="label-info" @if($errors->has('pleasespecify')) has-error @endif><label>IF YES PLEASE SPECIFY</label></td>
-                        <td colspan="6"><input class="form-control" id="pleasespecifytxt" name="pleasespecify" type="text" disabled="disabled"> @if($errors->has("pleasespecify"))
+                        <td class="label-info"><label>IF YES PLEASE SPECIFY</label></td>
+                        <td colspan="6" class="@if($errors->has('pleasespecify')) has-error @endif"><input class="form-control" id="pleasespecifytxt" name="pleasespecify" type="text" disabled="disabled"> @if($errors->has("pleasespecify"))
                 <span class="help-block" style="color: red;" >{{ "This field is required" }}</span>
                 @endif</td>
                       </tr>
@@ -301,8 +375,11 @@
                         <td ><label><input type="radio" name="certifications" value="iso9001">ISO 9001</label></td>
                         <td ><label><input type="radio" name="certifications" value="iso14001">ISO 14001</label></td>
                         <td ><label><input type="radio" name="certifications" value="OHSAS18001">OHSAS 18001</label></td>
-                        <td ><label><input type="radio" name="certifications" value="iso9001">OTHERS(PLS Specify)</label></td>
-                        <td colspan="2"><input class="form-control" id="certifications" name="certifications" type="text"></td>
+                        <td ><label><input type="radio" name="certifications" value="isoothers" checked="checked"11>OTHERS(PLS Specify)</label></td>
+                        <td colspan="2" class="@if($errors->has('certificationstxt')) has-error @endif"><input class="form-control" id="certifications" name="certificationstxt" type="text">@if($errors->has("certificationstxt"))
+                <span class="help-block" style="color: red;" >{{ "This field is required" }}</span>
+                @endif
+                        </td>
                       </tr>
 
                       <tr>
@@ -335,27 +412,27 @@
                         <td colspan="8" style="text-align:center;" class="label-warning"><label>SECTION III.A : BANK DETAILS</label></td>
                       </tr>
                       <tr>
-                        <td class="label-warning" colspan="2"  @if($errors->has('bankname')) has-error @endif><label>NAME OF BANK</label></td>
-                        <td colspan="2"><input class="form-control" id="bankname" name="bankname" type="text">@if($errors->has("bankname"))
+                        <td class="label-warning" colspan="2"><label>NAME OF BANK</label></td>
+                        <td colspan="2" class="@if($errors->has('bankname')) has-error @endif"><input class="form-control" id="bankname" name="bankname" type="text">@if($errors->has("bankname"))
                 <span class="help-block" style="color: red;" >{{ "bankname is required" }}</span>
                 @endif</td>
 
-                        <td class="label-warning" @if($errors->has('accountname')) has-error @endif><label>ACCOUNT NAME</label></td>
-                        <td colspan="3"><input class="form-control" id="accountname" name="accountname" type="text">@if($errors->has("accountname"))
+                        <td class="label-warning"><label>ACCOUNT NAME</label></td>
+                        <td colspan="3" class="@if($errors->has('accountname')) has-error @endif"><input class="form-control" id="accountname" name="accountname" type="text">@if($errors->has("accountname"))
                 <span class="help-block" style="color: red;" >{{ "accountname is required" }}</span>
                 @endif</td>
                       </tr>
 
                       <tr>
-                        <td class="label-warning" colspan="2" @if($errors->has('accountno')) has-error @endif><label>ACCOUNT NO.</label></td>
-                        <td colspan="2"><input class="form-control" id="accountno" name="accountno" type="text">@if($errors->has("accountno"))
+                        <td class="label-warning" colspan="2"><label>ACCOUNT NO.</label></td>
+                        <td colspan="2" class="@if($errors->has('accountno')) has-error @endif"><input class="form-control" id="accountno" name="accountno" type="text">@if($errors->has("accountno"))
                 <span class="help-block" style="color: red;" >{{ "accountno is required" }}</span>
                 @endif</td>
 
                         <td class="label-warning"><label>SWIFT CODE NO</label></td>
                         <td><input class="form-control" id="swiftcode" name="swiftcode" type="text"></td>
-                        <td class="label-warning" @if($errors->has('currency')) has-error @endif><label>CURRENCY</label></td>
-                        <td>
+                        <td class="label-warning"><label>CURRENCY</label></td>
+                        <td class="@if($errors->has('currency')) has-error @endif">
                         <select class="form-control" id="currency" name="currency" value="">
                             <option value="">Select</option>
                             <option value="AED">AED - Emirati Dirham</option>
@@ -430,42 +507,42 @@
             <td colspan="3" style="text-align:center;" class="label-warning" @if($errors->has('locationofoffice')) has-error @endif><label>LOCATION OF OFFICE/S</label></td>
           </tr>
           <tr>
-          <td colspan="2"><label><input type="radio" name="natureoflocation" value="permanent">PERMANENT TYPE</label>
+          <td colspan="3"><label><input type="radio" name="natureoflocation" value="permanent">PERMANENT TYPE</label>
           <label><input type="radio" name="natureoflocation" value="temporary">TEMPORARY OFFICE</label>@if($errors->has("natureoflocation"))
                 <span class="help-block" style="color: red;" >{{ "nature of office is required" }}</span>
                 @endif</td>
 
-          <td colspan="4"><label><input type="radio" name="locationofoffice" value="local">LOCAL OFFICE(QATAR)</label>
+          <td colspan="3"><label><input type="radio" name="locationofoffice" value="local">LOCAL OFFICE(QATAR)</label>
           <label><input type="radio" name="locationofoffice" value="foreign">FOREIGN OFFICE</label>@if($errors->has("locationofoffice"))
                 <span class="help-block" style="color: red;" >{{ "location of office is required" }}</span>
                 @endif</td>
           </tr>
 
           <tr>
-            <td class="label-warning" @if($errors->has('commregno')) has-error @endif><label>COMMERCIAL REGISTRATION NO.</label></td>
-            <td><input class="form-control" id="commregno" name="commregno" type="text">@if($errors->has("commregno"))
+            <td class="label-warning"><label>COMMERCIAL REGISTRATION NO.</label></td>
+            <td class="@if($errors->has('commregno')) has-error @endif"><input class="form-control" id="commregno" name="commregno" type="text">@if($errors->has("commregno"))
                 <span class="help-block" style="color: red;" >{{ "commercial REG.no of office is required" }}</span>
                 @endif</td>
 
-            <td class="label-warning" @if($errors->has('qcmembership')) has-error @endif><label>QATAR CHAMBER OF COMMERCE MEMBERSHIP</label></td>
-            <td><input class="form-control" id="qcmembership" name="qcmembership" type="text">@if($errors->has("qcmembership"))
+            <td class="label-warning"><label>QATAR CHAMBER OF COMMERCE MEMBERSHIP</label></td>
+            <td class="@if($errors->has('qcmembership')) has-error @endif"><input class="form-control" id="qcmembership" name="qcmembership" type="text">@if($errors->has("qcmembership"))
                 <span class="help-block" style="color: red;" >{{ "qatar membership of office is required" }}</span>
                 @endif</td>
 
-            <td rowspan="2" @if($errors->has('taxcardno')) has-error @endif><label>TAX CARD NUMBER</label></td>
-            <td rowspan="2"><input class="form-control" id="taxcardno" name="taxcardno" type="text">@if($errors->has("taxcardno"))
+            <td rowspan="2"><label>TAX CARD NUMBER</label></td>
+            <td rowspan="2" class="@if($errors->has('taxcardno')) has-error @endif"><input class="form-control" id="taxcardno" name="taxcardno" type="text">@if($errors->has("taxcardno"))
                 <span class="help-block" style="color: red;" >{{ "tax card no is required" }}</span>
                 @endif</td>
           </tr>
 
           <tr>
-            <td class="label-warning"  @if($errors->has('membervalidity1')) has-error @endif><label>VALIDITY</label></td>
-            <td><input class="form-control" id="membervalidity1" name="membervalidity1" type="date">@if($errors->has("membervalidity1"))
+            <td class="label-warning"><label>VALIDITY</label></td>
+            <td class="@if($errors->has('membervalidity1')) has-error @endif"><input class="form-control" id="membervalidity1" name="membervalidity1" type="date">@if($errors->has("membervalidity1"))
                 <span class="help-block" style="color: red;" >{{ "commercial REG.no expiry date is required" }}</span>
                 @endif</td>
 
-            <td class="label-warning" @if($errors->has('membervalidity2')) has-error @endif><label>VALIDITY</label></td>
-            <td><input class="form-control" id="membervalidity2" name="membervalidity2" type="date">@if($errors->has("membervalidity2"))
+            <td class="label-warning"><label>VALIDITY</label></td>
+            <td class="@if($errors->has('membervalidity2')) has-error @endif"><input class="form-control" id="membervalidity2" name="membervalidity2" type="date">@if($errors->has("membervalidity2"))
                 <span class="help-block" style="color: red;" >{{ "Qatar chamber of commerce membership expiry date is required" }}</span>
                 @endif</td>
           </tr>
@@ -575,5 +652,11 @@
 
       
       </script>
+
+      @endsection
+
+
+      @section('css')
+         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
       @endsection

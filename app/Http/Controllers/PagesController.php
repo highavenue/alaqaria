@@ -21,6 +21,9 @@ use Response;
 use Validator;
 use Input;
 use Mail;
+use PDF;
+use URL;
+use Redirect;   
 
 class PagesController extends Controller
 {
@@ -244,8 +247,24 @@ public function getVendorRegForm()
 }
 public function storeVendorRegForm(Request $request)
 {
-    $vendorconstant = VendorConstant::select('id')->orderBy('created_at', 'desc')->first();
+    //return $_SERVER["DOCUMENT_ROOT"].'/uploads/img/logo/logo.jpg';
+    //foreach($request->otherdocument as $doc)
+
+    $vendorconstant = VendorConstant::orderBy('created_at', 'desc')->first();
     $vendorregistration = new Vendorregistration();
+    $nofyears ="";
+    $certifications="";
+
+    if($request->noofyears==">21")
+        $noofyears=$request->noofyearstxt;
+    else
+        $noofyears=$request->noofyears;
+
+    if($request->certifications=="isoothers")
+        $certifications=$request->certificationstxt;
+    else
+        $certifications=$request->certifications;
+   
 
     $this->validate($request,[
         'companyregisteredname' => 'required',
@@ -256,17 +275,22 @@ public function storeVendorRegForm(Request $request)
         'telephoneno' => 'required',
         'email' => 'required',
         'faxno' => 'required',
-        'natureofbusiness' => 'required',
-        'fieldoftrade' => 'required',
-        'fieldoftradetext'=> 'required',
+    
         'personname' => 'required',
         'personjobtitle' => 'required',
         'personemail' => 'required',
         'personmobileno' => 'required',
-        'crdoc' => 'required | file | mimes:jpeg,bmp,png,gif,svg,pdf,doc,docx',
-        'tradelicencedoc' => 'required | file | mimes:jpeg,bmp,png,gif,svg,pdf,doc,docx',
-        'companysignaturedoc' => 'required | file | mimes:jpeg,bmp,png,gif,svg,pdf,doc,docx',
-        'otherdocument' => 'sometimes | file | mimes:jpeg,bmp,png,gif,svg,pdf,doc,docx',
+
+        'crdoc' => 'required | file | mimes:jpeg,pdf,doc,docx',
+        'tradelicencedoc' => 'required | file | mimes:jpeg,pdf,doc,docx',
+        'companysignaturedoc' => 'required | file | mimes:jpeg,pdf,doc,docx',
+        'otherdocument1' => 'sometimes | file | mimes:jpeg,pdf,doc,docx',
+        'otherdocument2' => 'sometimes | file | mimes:jpeg,pdf,doc,docx',
+        'otherdocument3' => 'sometimes | file | mimes:jpeg,pdf,doc,docx',
+        'otherdocument4' => 'sometimes | file | mimes:jpeg,pdf,doc,docx',
+        'otherdocument5' => 'sometimes | file | mimes:jpeg,pdf,doc,docx',
+        'docdetailstext' => 'required',
+
         'poorexp' => 'required',
         'pleasespecify' => 'required_if:poorexp,yes',
         'bankname' => 'required',
@@ -280,8 +304,37 @@ public function storeVendorRegForm(Request $request)
         'taxcardno'  => 'required',
         'membervalidity1' => 'required',
         'membervalidity2' => 'required',
-        'declaration' => 'required'
-        ]);   
+        'declaration' => 'required',
+         'noofyearstxt' => 'required_if:noofyears,>21', 
+         'certificationstxt'=> 'required_if:certifications,isoothers',
+
+
+
+        'naturetrader' => 'required_without_all :naturemanufacturer,manufacturer,naturecontractor,contractor,naturedistributor,distributor,natureconsultant,consultant,natureserviceprovider,serviceprovider,natureotherscheck,otherscheck',
+
+        'naturemanufacturer' => 'required_without_all :naturetrader,trader,naturecontractor,contractor,naturedistributor,distributor,natureconsultant,consultant,natureserviceprovider,serviceprovider,natureotherscheck,otherscheck',
+
+        'naturecontractor' => 'required_without_all :naturemanufacturer,manufacturer,naturetrader,trader,naturedistributor,distributor,natureconsultant,consultant,natureserviceprovider,serviceprovider,natureotherscheck,otherscheck',
+
+        'naturedistributor' => 'required_without_all :naturemanufacturer,manufacturer,naturecontractor,contractor,naturetrader,trader,natureconsultant,consultant,natureserviceprovider,serviceprovider,natureotherscheck,otherscheck',
+
+        'natureconsultant' => 'required_without_all :naturemanufacturer,manufacturer,naturecontractor,contractor,naturedistributor,distributor,naturetrader,trader,natureserviceprovider,serviceprovider,natureotherscheck,otherscheck',
+
+        'natureserviceprovider' => 'required_without_all :naturemanufacturer,manufacturer,naturecontractor,contractor,naturedistributor,distributor,natureconsultant,consultant,naturetrader,trader,natureotherscheck,otherscheck',
+
+        'natureotherscheck' => 'required_without_all :naturemanufacturer,manufacturer,naturecontractor,contractor,naturedistributor,distributor,natureconsultant,consultant,natureserviceprovider,serviceprovider,naturetrader,trader',
+
+        'natureothers' => 'required_if:natureotherscheck,others',
+
+
+         'fieldproduct' => 'required_without_all :fieldservice,services,fieldwork,works',
+         'fieldservice' => 'required_without_all:fieldproduct,products,fieldwork,works',
+         'fieldwork' => 'required_without_all:fieldproduct,products,fieldservice,services',
+         'fieldproducttext' => 'required_if:fieldproduct,products',
+         'fieldservicetext' => 'required_if:fieldservice,services',
+         'fieldworktext' => 'required_if:fieldwork,works',
+
+         ]);   
 
         // $crdoc=$request->file('crdoc'); //crdoc used to upload
         // $filename1=time(). '.' . $crdoc->getClientOriginalExtension(); //rename crdoc using timestap
@@ -306,8 +359,7 @@ public function storeVendorRegForm(Request $request)
         // $path=Storage::disk('event_img')->getDriver()->getAdapter()->getPathPrefix();
         // $file=$path.$filename;
         // Image::make($otherdocument->getRealPath())->save($file);
-      $nob = "";
-      $natureofbusiness  = implode('|', $request->natureofbusiness);
+    
 
         $vendorregistration->registryno = $request->input("registryno");
         $vendorregistration->registrydate = $request->input("registrydate");
@@ -327,11 +379,26 @@ public function storeVendorRegForm(Request $request)
         $vendorregistration->boxno = $request->input("boxno");
         $vendorregistration->telephoneno = $request->input("telephoneno");
         $vendorregistration->email = $request->input("email");
-        $vendorregistration->faxno = $request->input("faxno");
-        $vendorregistration->natureofbusiness = $natureofbusiness;
-        $vendorregistration->natureofbusinessother = $request->input("natureofbusinessother");
-        $vendorregistration->fieldoftrade = $request->input("fieldoftrade");
-        $vendorregistration->fieldoftradetext = $request->input("fieldoftradetext");
+        $vendorregistration->faxno = $request->input("faxno");  
+ 
+        $vendorregistration->naturetrader = $request->input("naturetrader");
+        $vendorregistration->naturemanufacturer = $request->input("naturemanufacturer");
+        $vendorregistration->naturecontractor = $request->input("naturecontractor");
+        $vendorregistration->naturedistributor = $request->input("naturedistributor");
+        $vendorregistration->natureconsultant = $request->input("natureconsultant");
+        $vendorregistration->natureserviceprovider = $request->input("natureserviceprovider");
+        $vendorregistration->natureothers = $request->input("natureothers");
+
+        // $vendorregistration->fieldoftrade = $request->input("fieldoftrade");
+        // $vendorregistration->fieldoftradetext = $request->input("fieldoftradetext");
+        $vendorregistration->fieldproduct = $request->input("fieldproduct");
+        $vendorregistration->fieldproducttext = $request->input("fieldproducttext");
+        $vendorregistration->fieldservice = $request->input("fieldservice");
+        $vendorregistration->fieldservicetext = $request->input("fieldservicetext");
+        $vendorregistration->fieldwork = $request->input("fieldwork");
+        $vendorregistration->fieldworktext = $request->input("fieldworktext");
+        $vendorregistration->docdetailstext = $request->input("docdetailstext");
+
         $vendorregistration->personname = $request->input("personname");
         $vendorregistration->personjobtitle = $request->input("personjobtitle");
         $vendorregistration->personemail = $request->input("personemail");
@@ -344,7 +411,7 @@ public function storeVendorRegForm(Request $request)
         // $vendorregistration->companysignaturedoc = $filename3;
         // $vendorregistration->otherdocument = $filename4;
 
-        $vendorregistration->noofyears = $request->input("noofyears");
+        $vendorregistration->noofyears = $noofyears;
         $vendorregistration->client1 = $request->input("client1");
         $vendorregistration->location1 = $request->input("location1");
         $vendorregistration->duration1 = $request->input("duration1");
@@ -358,7 +425,7 @@ public function storeVendorRegForm(Request $request)
         $vendorregistration->pleasespecify = $request->input("pleasespecify");
         $vendorregistration->previousbusinessname = $request->input("previousbusinessname");
         $vendorregistration->reasonforchange = $request->input("reasonforchange");
-        $vendorregistration->certifications = $request->input("certifications");
+        $vendorregistration->certifications = $certifications;
         $vendorregistration->certificationbody1 = $request->input("certificationbody1");
         $vendorregistration->validity1 = $request->input("validity1");
         $vendorregistration->certificationbody2 = $request->input("certificationbody2");
@@ -388,13 +455,23 @@ public function storeVendorRegForm(Request $request)
         $vendorregistration->vendorconstant_id=$vendorconstant->id;
 
         $vendorregistration->save();
+         //return "success";
 
         $data = array(
+
+          'documentno' => $vendorconstant->documentno,
+          'revisionno' => $vendorconstant->revisionno,
+          'revisiondate' => $vendorconstant->revisiondate,
           
          'crdoc'=>$request->file('crdoc'),
          'tradelicencedoc'=>$request->file('tradelicencedoc'),
          'companysignaturedoc'=>$request->file('companysignaturedoc'),
-         'otherdocument'=>$request->file('otherdocument'),  
+         'otherdocument1'=>$request->file('otherdocument1'), 
+         'otherdocument2'=>$request->file('otherdocument2'), 
+         'otherdocument3'=>$request->file('otherdocument3'), 
+         'otherdocument4'=>$request->file('otherdocument4'), 
+         'otherdocument5'=>$request->file('otherdocument5'), 
+
 
         'registryno' => $request->input("registryno"),
         'registrydate' => $request->input("registrydate"),
@@ -415,17 +492,33 @@ public function storeVendorRegForm(Request $request)
         'telephoneno' => $request->input("telephoneno"),
         'email' => $request->input("email"),
         'faxno' => $request->input("faxno"),
-        'natureofbusiness' => $natureofbusiness,
-        'natureofbusinessother' => $request->input("natureofbusinessother"),
-        'fieldoftrade' => $request->input("fieldoftrade"),
-        'fieldoftradetext' => $request->input("fieldoftradetext"),
+
+
+        'naturetrader' => $request->input("naturetrader"),
+        'naturemanufacturer' => $request->input("naturemanufacturer"),
+        'naturecontractor' => $request->input("naturecontractor"),
+        'naturedistributor' => $request->input("naturedistributor"),
+        'natureconsultant' => $request->input("natureconsultant"),
+        'natureserviceprovider' => $request->input("natureserviceprovider"),
+        'natureothers' => $request->input("natureothers"),       
+
+
+        'fieldproduct' => $request->input("fieldproduct"),
+        'fieldproducttext' => $request->input("fieldproducttext"),
+        'fieldservice' => $request->input("fieldservice"),
+        'fieldservicetext' => $request->input("fieldservicetext"),
+        'fieldwork' => $request->input("fieldwork"),
+        'fieldworktext' => $request->input("fieldworktext"),
+       
+
+        'docdetailstext' => $request->input("docdetailstext"),
         'personname' => $request->input("personname"),
         'personjobtitle' => $request->input("personjobtitle"),
         'personemail' => $request->input("personemail"),
         'personmobileno' => $request->input("personmobileno"),
         'persontelephoneno' => $request->input("persontelephoneno"),
         'personfaxno' => $request->input("personfaxno"),
-        'noofyears' => $request->input("noofyears"),
+        'noofyears' => $noofyears,
         'client1' => $request->input("client1"),
         'location1' => $request->input("location1"),
         'duration1' => $request->input("duration1"),
@@ -439,7 +532,7 @@ public function storeVendorRegForm(Request $request)
         'pleasespecify' => $request->input("pleasespecify"),
         'previousbusinessname' => $request->input("previousbusinessname"),
         'reasonforchange' => $request->input("reasonforchange"),
-        'certifications' => $request->input("certifications"),
+        'certifications' => $certifications,
         'certificationbody1' => $request->input("certificationbody1"),
         'validity1' => $request->input("validity1"),
         'certificationbody2' => $request->input("certificationbody2"),
@@ -466,26 +559,127 @@ public function storeVendorRegForm(Request $request)
         'membervalidity1' => $request->input("membervalidity1"),
         'membervalidity2' => $request->input("membervalidity2"),
         'otherdetails' => $request->input("otherdetails"),
-        'vendorconstant_id' => $vendorconstant->id
+        'vendorconstant_id' => $vendorconstant->id,
+        'imageurl' => $_SERVER["DOCUMENT_ROOT"].'/uploads/img/logo/logo.jpg'
       );
+    
+    $pdf = PDF::loadView('vendoremail.vendormailview',$data);
+    $pdf->setPaper('A4','portrait');
 
-     Mail::send('vendoremail.vendormailview',$data,function($message) use ($data){
-        $message->from('jubin1988@gmail.com', $data['email']);
+    $crext=$request->file('crdoc')->getClientOriginalExtension();
+    $tradeext=$request->file('tradelicencedoc')->getClientOriginalExtension();
+    $companysigext=$request->file('companysignaturedoc')->getClientOriginalExtension();
+
+    $otherdocext1=''; 
+    $otherdocext2='';
+    $otherdocext3='';
+    $otherdocext4='';
+    $otherdocext5='';
+
+    if($data['otherdocument1']!='')
+        $otherdocext1=$request->file('otherdocument1')->getClientOriginalExtension(); 
+
+    if($data['otherdocument2']!='')
+        $otherdocext2=$request->file('otherdocument2')->getClientOriginalExtension(); 
+
+    if($data['otherdocument3']!='')
+        $otherdocext3=$request->file('otherdocument3')->getClientOriginalExtension(); 
+
+    if($data['otherdocument4']!='')
+        $otherdocext4=$request->file('otherdocument4')->getClientOriginalExtension(); 
+
+    if($data['otherdocument5']!='')
+        $otherdocext5=$request->file('otherdocument5')->getClientOriginalExtension(); 
+
+
+         
+
+
+     Mail::send('vendoremail.empty',$data,function($message) use ($data,$pdf,$crext,$tradeext,$companysigext,$otherdocext1,$otherdocext2,$otherdocext3,$otherdocext4,$otherdocext5){
+        //$message->from('jubin1988@gmail.com', $data['email']);
+        $message->from($data['email'], 'From ALAQARIA Website');
         $message->to('jubinj1990@gmail.com');
-        $message->subject('New Enquiry From '.$data['companyregisteredname']);
-        $message->attach($data['crdoc'], ['as' => 'your-desired-name1.pdf', 
-            'mime' => 'application/pdf']);
-        $message->attach($data['tradelicencedoc'], ['as' => 'your-desired-name2.pdf', 
-            'mime' => 'application/pdf']);
-        $message->attach($data['companysignaturedoc'], ['as' => 'your-desired-name3.pdf', 
-            'mime' => 'application/pdf']);
-        $message->attach($data['otherdocument'], ['as' => 'your-desired-name4.pdf', 
-            'mime' => 'application/pdf']);
+        $message->subject('New Vendor Registration From : '.$data['companyregisteredname']);
+
+        $message->attach($data['crdoc'], ['as' => 'CompanyRegistartion.'.$crext, 
+            'mime' => 'application/'.$crext]);
+
+        $message->attach($data['tradelicencedoc'], ['as' => 'Trade Licence.'.$tradeext, 
+            'mime' => 'application/'.$tradeext]);
+        $message->attach($data['companysignaturedoc'], ['as' => 'Company signature.'.$companysigext, 
+            'mime' => 'application/'.$companysigext]);
+        if($data['otherdocument1']!='')
+        {
+            $message->attach($data['otherdocument1'], ['as' => 'Other Document1.'.$otherdocext1, 
+                'mime' => 'application/'.$otherdocext1]);
+        }
+
+        if($data['otherdocument2']!='')
+        {
+            $message->attach($data['otherdocument2'], ['as' => 'Other Document2.'.$otherdocext2, 
+                'mime' => 'application/'.$otherdocext2]);
+        }
+
+        if($data['otherdocument3']!='')
+        {
+            $message->attach($data['otherdocument3'], ['as' => 'Other Document3.'.$otherdocext3, 
+                'mime' => 'application/'.$otherdocext3]);
+        }
+
+        if($data['otherdocument4']!='')
+        {
+            $message->attach($data['otherdocument4'], ['as' => 'Other Document4.'.$otherdocext4, 
+                'mime' => 'application/'.$otherdocext4]);
+        }
+
+        if($data['otherdocument5']!='')
+        {
+            $message->attach($data['otherdocument5'], ['as' => 'Other Document5.'.$otherdocext5, 
+                'mime' => 'application/'.$otherdocext5]);
+        }
+
+
+        $message->attachData($pdf->output(),'VendorDetails.pdf');
 
       });
 
         return redirect()->route('vendorregistrations.index')->with('message', 'Vendor Registration successfully.');
 }
+
+ public function postContactus(Request $request)
+ {
+    $this->validate($request,[
+        'name' => 'required',
+        'companyname' => 'required',
+        'email' => 'required | email',
+        'phone'=> 'required',
+        'department' => 'required',
+        'subject' => 'required',
+        'contactmessage' => 'required',
+         ]);   
+
+    $data = array(       
+          
+         'name'=>$request->input('name'),
+         'companyname'=>$request->input('companyname'),
+         'email'=>$request->input('email'),
+         'phone'=>$request->input('phone'),
+         'department'=>$request->input('department'),
+         'subject'=>$request->input('subject'),
+         'contactmessage'=>$request->input('contactmessage'),
+            );
+
+    Mail::send('vendoremail.contactusmailview',$data,function($message) use ($data){
+        //$message->from('jubin1988@gmail.com', $data['email']);
+        $message->from($data['email'], 'From ALAQARIA Website');
+        $message->to($data['department']);//department emailid
+        $message->subject('New Enquiry For : '.$data['subject']);
+    });
+
+    Session::flash('success_msg','Message Send Successfully.');
+    return redirect()->back()->withInput();
+    
+ }
 
 
 }
