@@ -18,7 +18,8 @@
        
         <table class="table table-condensed table-striped">
             <thead>
-                <form method="GET" action="{{ route('msrsfiltered','Maintenance') }}">
+                {{-- <form method="GET" action="{{ route('msrsfiltered','Maintenance') }}"> --}}
+                <form method="GET" action="{{ route('msrsfiltered') }}">
                     <tr>
                         {{-- <th>ID</th> --}}
                         <th style="vertical-align: middle;">MSR REF. NO</th>

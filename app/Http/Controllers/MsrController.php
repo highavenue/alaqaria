@@ -47,13 +47,13 @@ class MsrController extends Controller {
 
 
 
-		$msrs = Msr::where($name,'=',$value)->paginate(1);
+		$msrs = Msr::where($name,'=',$value)->paginate(20);
 
 		return view('msrs.index', compact('msrs'));
 	}
 	public function index()
 	{
-		$msrs = Msr::orderBy('id', 'desc')->paginate(10);
+		$msrs = Msr::orderBy('id', 'desc')->paginate(20);
 
 		return view('msrs.index', compact('msrs'));
 	}

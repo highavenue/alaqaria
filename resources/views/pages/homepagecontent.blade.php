@@ -35,7 +35,7 @@
 
 
 <!-- Testimonial Section -->
-<section id="testim">
+{{-- <section id="testim">
     <div class="container">
         <div class="row testim_sec m0">
 
@@ -49,14 +49,14 @@
         <!-- /.row -->
     </div>
     <!-- /.container -->
-</section>
+</section> --}}
 
 
-<div class="spacer-60"></div>
+{{-- <div class="spacer-60"></div> --}}
 
 
 <!-- Latest News Section -->
-<section id="lates_news">
+{{-- <section id="lates_news">
     <div class="container">
         <div class="row">
 
@@ -70,10 +70,10 @@
        <!-- /.row -->
    </div>
    <!-- /.container -->
-</section>
+</section> --}}
 
 
-<div class="spacer-60"></div>
+{{-- <div class="spacer-60"></div> --}}
 
 
 

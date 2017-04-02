@@ -15,7 +15,7 @@
 
 @section('content')
 
-<div class="row" >
+<div class="row">
       <div class="col-md-6 col-md-offset-3" style="border: 2px solid black;" id="printable">
        <table class="table">
        <caption class="text-center" style="padding-bottom: 0px;">
@@ -132,7 +132,8 @@
         {
             position: absolute;
             left: 0px;
-            top: 0px;   
+            top: 0px;  
+            width: 100%; 
         }
     }
 

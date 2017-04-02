@@ -53,21 +53,21 @@ Route::post('vendorregform',"PagesController@storeVendorRegForm")->name('VendorR
 Route::post('/lang',"PagesController@setSession");
 
 //using location id to retrive category id and name by joining property and category tables.
-Route::get('/loc_cat/{id}', function($id) {
+// Route::get('/loc_cat/{id}', function($id) {
 
-	$category = Property::groupBy('category_id')->select('category_id','name_en','name_ar',DB::raw('count(*) as total'))->where('location_id','=',$id)->join('categories','properties.category_id','=','categories.id')->get();
+// 	$category = Property::groupBy('category_id')->select('category_id','name_en','name_ar',DB::raw('count(*) as total'))->where('location_id','=',$id)->join('categories','properties.category_id','=','categories.id')->get();
 	
-    //$property = Property::groupBy('category_id')->select('category_id',DB::raw('count(*) as total'))->where('location_id','=',$id)->get();
-    return $category;
-});
+//     //$property = Property::groupBy('category_id')->select('category_id',DB::raw('count(*) as total'))->where('location_id','=',$id)->get();
+//     return $category;
+// });
 
-Route::get('/loc_cat_type/{location_id}/{category_id}', function($location_id,$category_id) {
+// Route::get('/loc_cat_type/{location_id}/{category_id}', function($location_id,$category_id) {
 
-	$type = Property::groupBy('category_id','type_id')->select('type_id','name_en','name_ar',DB::raw('count(*) as total'))->where('location_id','=',$location_id)->where('category_id','=',$category_id)->join('types','properties.type_id','=','types.id')->get();
+// 	$type = Property::groupBy('category_id','type_id')->select('type_id','name_en','name_ar',DB::raw('count(*) as total'))->where('location_id','=',$location_id)->where('category_id','=',$category_id)->join('types','properties.type_id','=','types.id')->get();
 	
-    //$property = Property::groupBy('category_id')->select('category_id',DB::raw('count(*) as total'))->where('location_id','=',$id)->get();
-    return $type;
-});
+//     //$property = Property::groupBy('category_id')->select('category_id',DB::raw('count(*) as total'))->where('location_id','=',$id)->get();
+//     return $type;
+// });
 
 
 
@@ -117,5 +117,7 @@ Route::group(['prefix' => 'admin'], function ()
 	Route::get('/msrsfilter',"MsrController@sortOrderBy")->name("msrsfiltered");
 
 	Route::resource("vendor_constants","VendorConstantController");
+
+	Route::get('/tenderfilter',"TenderReceiptController@sortOrderBy")->name("tenderfilter");
 
 });

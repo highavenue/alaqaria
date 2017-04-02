@@ -60,6 +60,8 @@
                             <li><a href="{{ route('latestTenders') }}">Latest Tenders</a></li>
                             <li><a href="{{route('howToTender')}}">How to Tender</a></li>
                              <li><a href="{{route('tenderTermsAndConditions')}}">Terms & Conditions</a></li>
+
+                              <li><a href="{{ route('vendorRegForm') }}">Vender Registration</a></li>
                         </ul>
                     </li>
 
@@ -102,20 +104,27 @@
                         
                      
                  </li>
-                    <li>
+                  {{--   <li>
                         <a class="" href="#">Careers</a>
-                    </li>
+                    </li> --}}
 
                     <li>
                         <a href="#">Services</a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ route('msrForm') }}">MSR</a></li>
-                            <li><a href="{{ route('vendorRegForm') }}">Vender Registration</a></li>
+                           
                         </ul>
                     </li>
 
                     <li>
                         <a class="" href="{{ route('contactUs') }}">ContactUs</a>
+                    </li>
+                    <li>
+                        <a href="#">Employee Login</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="https://outlook.office365.com/owa/">WebMail</a></li>
+                           
+                        </ul>
                     </li>
 
                 </ul>

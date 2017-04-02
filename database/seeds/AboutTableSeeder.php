@@ -37,7 +37,7 @@ class AboutTableSeeder extends Seeder {
         	'subject_en' => 'About Us',
 	        'subject_ar' => 'معلومات عنا',
 	        'desc_en' => '<p>Qatar Real Estate Investment Company, (Alaqaria), is a leading Qatari Private Joint Shareholding Company (PJSC) with a mission to identify and invest in long-term projects contributing to Qatar’s growth. The company was established in 1995.</p>',
-	        'desc_ar' => 'لوريم إيبسوم(Lorem Ipsum) هو ببساطة نص شكلي (بمعنى أن الغاية هي الشكل وليس المحتوى) ويُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف بشكل عشوائي أخذتها من نص، لتكوّن كتيّب بمثابة دليل أو مرجع شكلي لهذه الأحرف. خمسة قرون من ',
+	        'desc_ar' => 'الشركة القطرية للاستثمارات العقارية(العقارية) ، هي شركة مساهمة قطرية خاصة(ش.م.خ.) مع المهمة للتحديد والاستثمار في المشاريع طويلة الأجل المساهمة في نمو قطر. وقد تأسست الشركة في عام 1995.',
 	        'image' => $new_name1,
 	        'created_at' => Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon::now()->toDateTimeString()
@@ -49,8 +49,9 @@ class AboutTableSeeder extends Seeder {
 	        'desc_en' => " <p>The company’s core business is in the real estate investment and development. The Company focuses on developing residential projects in industrial areas Qatar, especially in Dukhan, Mesaieed, and Al Khor. Over the last 17 years, Alaqaria has built a major presence in Qatar and has emerged as one of the country's leading real estate development companies. </p>
 <p>In the year 2010 Alaqaria came under the flagship of Barwa Real Estate Company, which is the largest real estate company in Middle East.  In 2012 Alaqaria acquired ASAS Real Estate Company which is owned 100%.</p>
 <p>From day one, the company’s mission has been to become a cornerstone in the development of Qatar and its industrial areas, creating lasting value and maximizing returns for the stakeholders.</p>",
-	        'desc_ar' => '<p>لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام، الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p>
-	        <p>لكن لا بد أن أوضح لك أن كل هذه الأفكار المغلوطة حول استنكار  النشوة وتمجيد الألم نشأت بالفعل، وسأعرض لك التفاصيل لتكتشف حقيقة وأساس تلك السعادة البشرية، فلا أحد يرفض أو يكره أو يتجنب الشعور بالسعادة، ولكن بفضل هؤلاء الأشخاص الذين لا يدركون بأن السعادة لا بد أن نستشعرها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لا يوجد من يرغب في الحب ونيل المنال ويتلذذ بالآلام، الألم هو الألم ولكن نتيجة لظروف ما قد تكمن السعاده فيما نتحمله من كد وأسي.</p>',
+	        'desc_ar' => 'الأعمال الأساسية للشركة هي الاستثمار العقاري والتنمية. وتركز الشركة على تطوير المشاريع السكنية في المناطق الصناعية في قطر، وخاصة في دخان ومسيعيد والخور. على مدى 17 سنه الماضية، قامت العقارية بإنشاء وجود كبير في قطر، وبرزت باعتبارها واحدة من الشركات الرائدة في مجال التطوير العقاري في البلاد.
+وفي العام 2010، أصبحت الشركة العقارية رائدة في مجال (شركة بروة العقارية)، وهي أكبر شركة عقارية في الشرق الأوسط. في عام 2012 استحوذت العقارية على شركة (أساس العقارية )التي تمتلك 100٪.
+من اليوم الأول، كانت مهمة الشركة لتصبح حجر الزاوية في تطوير قطر والمناطق الصناعية، وخلق قيمة دائمة وتعظيم العائدات لأصحاب المصلحة',
 	        'image' => $new_name2,
 	        'created_at' => Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon::now()->toDateTimeString()
@@ -72,11 +73,19 @@ class AboutTableSeeder extends Seeder {
   <li>Integrity</li>
 </ul>
 <p>These values are always present in its day to day operations, business dealings, people, policies, processes, and work environment.</p>",
-	        'desc_ar' => '<ul>
-		   <li>ها بصورة أكثر عقلانية ومنطقية فيعرضهم هذا لمواجهة الظروف الأليمة، وأكرر بأنه لمن.</li>
-		   <li> نتيجة لظروف ما قد تكمن السعاده فيما نتحمله م</li>
-		   <li>  الألم الذي ربما تنجم عنه بعض ا.</li>
-</ul>',
+	        'desc_ar' => 'الرؤية:
+وتتمثل رؤية العقارية في أن تكون في طليعة التطوير والإدارة في قطاع العقارات في قطر، وهي الشركة الرائدة في تشكيل وتأثير نوعية التطورات السكنية والتجارية في البلاد للأفضل، لإحداث فرق كبير لعملائنا.
+
+
+المهمه:
+لخلق أماكن أفضل بطريقة فعالة للناس للعيش والعمل والتمتع بها
+القيم
+ريادة الأعمال
+التزام
+الموثوقية
+العمل بروح الفريق الواحد
+النزاهة
+هذه القيم موجودة دائما في عملياتها اليومية، التعاملات التجارية، الناس، السياسات، العمليات، وبيئة العمل.',
 	        'image' => $new_name3,
 	        'created_at' => Carbon::now()->toDateTimeString(),
 	        'updated_at' => Carbon::now()->toDateTimeString()

@@ -12,6 +12,8 @@
 
             <?php
             $locations=App\Location::all();
+            $categories=App\Category::all();
+            $types=App\Type::all();
             ?>
 
             <div class="control-group form-group">
@@ -39,6 +41,9 @@
                     <label>Category</label>
                     <select name="category" class="form-control" required data-validation-required-message="Please select a state." id="category">
                        <option value="" selected="selected">Select a Category</option>
+                       @foreach($categories as $category)
+                       <option value="{{ $category->id }}">{{$category->name_en.' - '.$category->name_ar}}</option>
+                       @endforeach
                    {{--      <option value="2">Commercial</option>
                    <option value="3">Household</option> --}}
                </select>
@@ -49,6 +54,9 @@
             <label>Type</label>
             <select name="type" class="form-control" required data-validation-required-message="Please select a state." id="type">
                 <option value="" selected="selected">Select a Type</option>
+                @foreach($types as $type)
+                <option value="{{ $type->id }}">{{$type->name_en.' - '.$type->name_ar}}</option>
+                @endforeach
             </select>
         </div>
     </div>
@@ -167,48 +175,51 @@
     //     });
     // });
 
-    $(document).ready(function() {
+// --------------------------------------------------------------
 
-        $('select#location').on('change', function() {
-            var Selected = $(this).find("option:selected");
-            idSelected  = Selected.val();
-            var url=("/loc_cat/").concat(idSelected);
-            $.get( url)
-            .done(function( data ) {
-                $('#category').empty();
-                $('#category').append('<option value="" selected="selected">Select a Category</option>');
-                $.each(data,function(index,subCatObj)
-                {
-                        //alert(subCatObj.name_en);
-                        $('#category').append('<option value="'+subCatObj.category_id+'">'+subCatObj.name_en+' - '+subCatObj.name_ar+'</option>');
-                    });
-                //alert( "Data Loaded: " + data );
-            });
-        });
+    // $(document).ready(function() {
 
-
-        $('select#category').on('change', function() {
-            var category = $(this).find("option:selected");
-            idCategory=category.val();
-            var location = $('select#location').find("option:selected");
-            idLocation=location.val();
-            var url=("/loc_cat_type/"+idLocation+'/'+idCategory); //).concat(idSelected);
-            $.get( url)
-            .done(function( data ) {
-                $('#type').empty();
-                $('#type').append('<option value="" selected="selected">Select a Type</option>');
-                $.each(data,function(index,subCatObj)
-                {
-                        //alert(subCatObj.name_en);
-                        $('#type').append('<option value="'+subCatObj.type_id+'">'+subCatObj.name_en+' - '+subCatObj.name_ar+'</option>');
-                    });
-                //alert( "Data Loaded: " + data );
-            });
-        });
+    //     $('select#location').on('change', function() {
+    //         var Selected = $(this).find("option:selected");
+    //         idSelected  = Selected.val();
+    //         var url=("/loc_cat/").concat(idSelected);
+    //         $.get( url)
+    //         .done(function( data ) {
+    //             $('#category').empty();
+    //             $('#category').append('<option value="" selected="selected">Select a Category</option>');
+    //             $.each(data,function(index,subCatObj)
+    //             {
+    //                     //alert(subCatObj.name_en);
+    //                     $('#category').append('<option value="'+subCatObj.category_id+'">'+subCatObj.name_en+' - '+subCatObj.name_ar+'</option>');
+    //                 });
+    //             //alert( "Data Loaded: " + data );
+    //         });
+    //     });
 
 
+    //     $('select#category').on('change', function() {
+    //         var category = $(this).find("option:selected");
+    //         idCategory=category.val();
+    //         var location = $('select#location').find("option:selected");
+    //         idLocation=location.val();
+    //         var url=("/loc_cat_type/"+idLocation+'/'+idCategory); //).concat(idSelected);
+    //         $.get( url)
+    //         .done(function( data ) {
+    //             $('#type').empty();
+    //             $('#type').append('<option value="" selected="selected">Select a Type</option>');
+    //             $.each(data,function(index,subCatObj)
+    //             {
+    //                     //alert(subCatObj.name_en);
+    //                     $('#type').append('<option value="'+subCatObj.type_id+'">'+subCatObj.name_en+' - '+subCatObj.name_ar+'</option>');
+    //                 });
+    //             //alert( "Data Loaded: " + data );
+    //         });
+    //     });
 
-    });
+
+
+    // });
+    // ---------------------------------------------------------------------
 </script>
 
 

@@ -656,7 +656,7 @@
       @endsection
 
 
-      @section('css')
+    {{--   @section('css')
          <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
 
-      @endsection
+      @endsection --}}

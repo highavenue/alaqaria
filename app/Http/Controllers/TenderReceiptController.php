@@ -16,9 +16,49 @@ class TenderReceiptController extends Controller {
 	 *
 	 * @return Response
 	 */
+
+	public function sortOrderBy(Request $request)
+	{
+		$name="";
+		$value="";
+		//return $request->requestedfor;
+		if ($request->has('company_name')) 
+		{
+			$name="company_name";
+			$value=$request->company_name;
+		}
+		elseif ($request->has('receipt_number')) 
+		{
+			$name="receipt_number";
+			$value=$request->receipt_number;   	
+		}
+		elseif ($request->has('tender_no')) 
+		{
+			$tender=Tender::select('id')->where('tender_no','=',$request->tender_no)->first();
+
+			$name='tender_id';
+			$value=$tender->id;   	
+		}
+		elseif ($request->has('requeststatus')) 
+		{
+			$name="requeststatus";
+			$value=$request->requeststatus;   	
+		}
+		elseif ($request->has('workstatus')) 
+		{
+			$name="workstatus";
+			$value=$request->workstatus;   	
+		}
+
+
+
+		$tender_receipts = TenderReceipt::where($name,'=',$value)->paginate(20);
+		return view('tender_receipts.index', compact('tender_receipts'));
+	}
+
 	public function index()
 	{
-		$tender_receipts = TenderReceipt::orderBy('id', 'desc')->paginate(10);
+		$tender_receipts = TenderReceipt::orderBy('id', 'desc')->paginate(20);
 		//$tenders=Tender::get('tendor_no');
 		return view('tender_receipts.index', compact('tender_receipts'));
 	}

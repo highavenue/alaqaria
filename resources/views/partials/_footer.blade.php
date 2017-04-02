@@ -1,6 +1,22 @@
     <?php
         $contact=App\Contact::find(1);
+        $aboutus=App\About::find(1);
         $lang=Session::get('lang');
+
+        $about_desc="";
+
+        if($lang=='ar')
+        {
+            $about_desc=$aboutus->desc_ar;
+
+        }
+        else
+        {
+            $about_desc=$aboutus->desc_en;
+
+        }
+                
+
     ?>
 
     <!-- Footer -->
@@ -12,26 +28,48 @@
                     <!-- About Section -->                
                     <div class="col-md-3 abt_sec">
                         <h2 class="foot_title">
-                   About Wedoor
+                   About ALAQARIA
                 </h2>
-                        <p>
-                            Ethical quinoa slow-carb squid, irony Pitchfork tousled hella art party PBR&amp;B cray dreamcatcher brunch.
-                        </p>
-
-                        <div class="spacer-20"></div>
-
-                        <p>
-                            Bicycle rights jean shorts organic, street art PBR occupy flexitarian pour-over master cleanse farm-to-table.
-
-                        </p>
+                        <p>{!!$about_desc!!}</p>
 
                     </div>
                     <!-- Latest Tweets --> 
-                    <div class="col-md-3">
+                    <div class="col-md-3 abt_sec">
                         <h2 class="foot_title">
-                   Latest Tweets
+                   Page Views
                 </h2>
-                        <ul class="tweets">
+                <div style="background-color: black;width: 100px;height: 30px;text-align: center;color: white;font-size: 24px;">
+                <?php
+session_start();
+$counter_name = "counter.txt";
+
+// Check if a text file exists. If not create one and initialize it to zero.
+if (!file_exists($counter_name)) {
+  $f = fopen($counter_name, "w");
+  fwrite($f,"0");
+  fclose($f);
+}
+
+// Read the current value of our counter file
+$f = fopen($counter_name,"r");
+$counterVal = fread($f, filesize($counter_name));
+fclose($f);
+
+// Has visitor been counted in this session?
+// If not, increase counter value by one
+if(!isset($_SESSION['hasVisited'])){
+  $_SESSION['hasVisited']="yes";
+  $counterVal++;
+  $f = fopen($counter_name, "w");
+  fwrite($f, $counterVal);
+  fclose($f); 
+}
+
+echo "$counterVal";
+?>
+                  
+                </div>
+                        {{-- <ul class="tweets">
                             <li> <i class="fa fa-twitter"></i>
                                 <p class="twee">
                                     Check out this great <a href="#">#themeforest</a> item 'Responsive Photography WordPress <a href="#">http://drbl.in/871942</a>
@@ -53,7 +91,7 @@
                                 <p class="datd"> 6 April 2015 </p>
                                 <div class="clearfix"></div>
                             </li>
-                        </ul>
+                        </ul> --}}
 
                     </div>
                     <!-- Contact Info -->
@@ -101,11 +139,11 @@
                             Useful Links
                         </h2>
                         <ul class="foot_nav">
-                            <li> <a href="index.html">Home Search</a> </li>
-                            <li> <a href="property_listing.html">Properties Inspection</a> </li>
-                            <li> <a href="agents.html">Agents Consult</a> </li>
-                            <li> <a href="blog.html">Latest News</a> </li>
-                            <li> <a href="contact.html">Get in touch</a> </li>
+                            <li> <a href="{{ route('homePage') }}">Home Search</a> </li>
+                            <li> <a href="{{ route('properties') }}">Properties Inspection</a> </li>
+                            <li> <a href="{{ route('latestTenders') }}">Latest Tenders</a> </li>
+                            <li> <a href="{{route('events')}}">Events</a> </li>
+                            <li> <a href="{{ route('contactUs') }}">ContactUs</a> </li>
                         </ul>
 
                     </div>
@@ -121,11 +159,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6 text-left">
-                        <p>&copy; Copyright 2014. All Rights Reserved by <a href="#"> WeDoor </a>
+                        <p>&copy; Copyright 2017. {{-- All Rights Reserved by <a href="#"> WeDoor --}} </a>
                         </p>
                     </div>
                     <div class="col-sm-6 text-right">
-                        <p>Template developed by <a href="http://themeforest.net/user/crelegant"> The Crelegant Team </a> </p>
+                        <p>Website develped by <a href="http://www.highavenuegroup.com" target="blank"> Highavenue </a> </p>
                     </div>
                 </div>
             </div>
